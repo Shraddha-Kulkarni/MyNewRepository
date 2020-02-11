@@ -1,4 +1,4 @@
-package jdbcPack;
+//package jdbcPack;
 
 public class Emp {
 	int id;
