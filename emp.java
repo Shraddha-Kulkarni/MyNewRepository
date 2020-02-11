@@ -4,7 +4,7 @@ public class emp {
 	int id;
 	String name;
 	float salary;
-	Employee(){}
+	emp(){}
 	emp(int id,String name, float salary)
 	{
 		this.id=id;
