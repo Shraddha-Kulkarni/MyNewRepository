@@ -1,0 +1,243 @@
+QUERY 3.1
+
+1
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select s.staff_name, s.dept_name, d.dept_code, s.staff_sal
+  2  from staff_master s, department_master d
+  3* where s.dept_code=d.dept_code and s.staff_sal>20000
+SQL> /
+
+STAFF_NAME
+--------------------------------------------------
+DEPT_NAME                                           DEPT_CODE  STAFF_SAL
+-------------------------------------------------- ---------- ----------
+a
+hiring                                                     56     280000
+
+a
+hiring                                                     56     280000
+
+a
+hiring                                                     56     280000
+
+
+STAFF_NAME
+--------------------------------------------------
+DEPT_NAME                                           DEPT_CODE  STAFF_SAL
+-------------------------------------------------- ---------- ----------
+b
+hiring                                                     56      29000
+
+b
+hiring                                                     56      29000
+
+b
+hiring                                                     56      29000
+
+
+STAFF_NAME
+--------------------------------------------------
+DEPT_NAME                                           DEPT_CODE  STAFF_SAL
+-------------------------------------------------- ---------- ----------
+c
+field                                                      56      59000
+
+c
+field                                                      56      59000
+
+c
+field                                                      56      59000
+
+
+9 rows selected.
+
+2 sol:
+SQL> select s.staff_code as "staff#", s.staff_name as "staff", s.dept_name, s.mgr_no as "mgr#", s.mgr_name as "manager" from staff_master s, department_master d where s.dept_name=d.dept_name;
+
+    staff# staff
+---------- --------------------------------------------------
+DEPT_NAME                                                mgr#
+-------------------------------------------------- ----------
+manager
+--------------------------------------------------
+         1 a
+hiring
+
+
+         1 a
+hiring
+
+
+    staff# staff
+---------- --------------------------------------------------
+DEPT_NAME                                                mgr#
+-------------------------------------------------- ----------
+manager
+--------------------------------------------------
+
+         2 b
+hiring
+
+
+         2 b
+hiring
+
+    staff# staff
+---------- --------------------------------------------------
+DEPT_NAME                                                mgr#
+-------------------------------------------------- ----------
+manager
+--------------------------------------------------
+
+
+         3 c
+field
+
+
+         3 c
+
+    staff# staff
+---------- --------------------------------------------------
+DEPT_NAME                                                mgr#
+-------------------------------------------------- ----------
+manager
+--------------------------------------------------
+field
+
+
+         3 c
+field                                              9573179345
+tony
+
+
+7 rows selected.
+3 sol:
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select t.student_code, t.student_name, t.book_code, m.book_name
+  2  from book_master m, book_transactions t
+  3* where m.book_code=t.book_code and t.book_actual_return_date='25-JAN-2020'
+SQL> /
+
+STUDENT_CODE STUDENT_NAME                                        BOOK_CODE
+------------ -------------------------------------------------- ----------
+BOOK_NAME
+--------------------------------------------------
+          44 vikram                                                      1
+hindu
+
+          44 vikram                                                      2
+Sakshi
+
+4 sol:
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select s.staff_code, s.staff_name, s.dept_name, s.design_name, b.book_code, b.book_name, b.issue_date
+  2     from staff_master s, book_master b
+  3     where s.book_name=b.book_name
+  4*    and to_char(sysdate - s.issue_date)<30
+SQL> /
+
+STAFF_CODE STAFF_NAME
+---------- --------------------------------------------------
+DEPT_NAME
+--------------------------------------------------
+DESIGN_NAME                                         BOOK_CODE
+-------------------------------------------------- ----------
+BOOK_NAME                                          ISSUE_DAT
+-------------------------------------------------- ---------
+         1 abc
+accounts
+hr                                                          1
+hari                                               12-JAN-20
+
+5 sol:
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select s.staff_code, s.staff_name, s.design_name, s.dept_name, s.book_name, b.book_code, 5*(sysdate-s.expected_return_date)
+  2  as FINE
+  3  from staff_master s,book_master b
+  4* where s.book_name = b.book_name
+SQL> /
+
+STAFF_CODE STAFF_NAME
+---------- --------------------------------------------------
+DESIGN_NAME
+--------------------------------------------------
+DEPT_NAME
+--------------------------------------------------
+BOOK_NAME                                           BOOK_CODE       FINE
+-------------------------------------------------- ---------- ----------
+         1 abc
+hr
+accounts
+hari                                                        1
+
+
+STAFF_CODE STAFF_NAME
+---------- --------------------------------------------------
+DESIGN_NAME
+--------------------------------------------------
+DEPT_NAME
+--------------------------------------------------
+BOOK_NAME                                           BOOK_CODE       FINE
+-------------------------------------------------- ---------- ----------
+         2 xyz
+CEO
+general
+revolution                                                  2
+
+
+STAFF_CODE STAFF_NAME
+---------- --------------------------------------------------
+DESIGN_NAME
+--------------------------------------------------
+DEPT_NAME
+--------------------------------------------------
+BOOK_NAME                                           BOOK_CODE       FINE
+-------------------------------------------------- ---------- ----------
+         1 a
+AE
+x
+power systems                                               5 23.3078125
+
+
+STAFF_CODE STAFF_NAME
+---------- --------------------------------------------------
+DESIGN_NAME
+--------------------------------------------------
+DEPT_NAME
+--------------------------------------------------
+BOOK_NAME                                           BOOK_CODE       FINE
+-------------------------------------------------- ---------- ----------
+         1 a
+AE
+x
+power systems                                               5 23.3078125
+
+6 sol:
+SQL> select staff_code, sal, staff_name from staff_master where sal < any(select avg(sal) from staff_master group by department);
+
+STAFF_CODE        SAL STAFF_NAME
+---------- ---------- --------------------------------------------------
+         2        200 y
+         3        300 z
+
+7 sol:
+SQL> select book_pub_author, book_name from book_master where book_pub_author=(select book_pub_author from book_master group by book_pub_author having count(book_name)>1);
+
+BOOK_PUB_AUTHOR
+--------------------------------------------------
+BOOK_NAME
+--------------------------------------------------
+pratham
+games
+
+pratham
+signals
+

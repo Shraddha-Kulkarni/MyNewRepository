@@ -1,0 +1,111 @@
+QUERY1.1
+
+1 ans:
+SELECT staff_name, Desihn_code
+  2  FROM staff_Master
+  3  WHERE Hiredate<'1-JAN-2003' and staff_sal between '12000' and '25000';
+
+STAFF_NAME                                         DESIHN_CODE
+-------------------------------------------------- -----------
+supraja                                                     23
+
+SQL>  insert into staff_Master values(10, 'sreeja', 23, 2, ('10-JAN-2000'), ('10-NOV-1999'), 'Kalimandir', 19, 20000);
+
+1 row created.
+
+SQL> SELECT staff_name, Desihn_code
+  2  FROM staff_Master
+  3  WHERE Hiredate<'1-JAN-2003' and staff_sal between '12000' and '25000';
+
+STAFF_NAME                                         DESIHN_CODE
+-------------------------------------------------- -----------
+supraja                                                     23
+sreeja                                                      23
+
+
+2 ans:
+SELECT sysdate
+  2  FROM dual
+  3  ;
+
+SYSDATE
+---------
+24-JAN-20
+ SELECT staff_name, staff_code, Desihn_code
+  2  FROM staff_Master
+  3  WHERE sysdate-hiredate>18;
+
+STAFF_NAME                                         STAFF_CODE DESIHN_CODE
+-------------------------------------------------- ---------- -----------
+supraja                                                    10          23
+sreeja                                                     10          23
+sreeja                                                     10          23
+
+ 3 ans
+insert into staff_Master values(10, 'supraja', 12, 13, ('1-JAN-2000'), ('10-NOV-1999'), 'Kalimandir', null, 20000);
+
+1 row created.
+
+SQL> SELECT staff_name, staff_code, Desihn_code
+  2  FROM staff_Master
+  3  WHERE Mgr_code is null;
+
+STAFF_NAME                                         STAFF_CODE DESIHN_CODE
+-------------------------------------------------- ---------- -----------
+supraja                                                    10          12
+
+5 ans:
+insert into staff_Master values(10, 'sree_a', 12, 13, ('1-JAN-2000'), ('10-NOV-1999'), 'Kalimandir', null, 20000);
+SELECT staff_name
+  2  FROM staff_Master
+  3   WHERE staff_name like '%\_%' escape '\';
+
+STAFF_NAME
+--------------------------------------------------
+sree_a
+
+4 ans:
+insert into Book_Data values(10, 'physic&', 2002, 'Sarvanand');
+
+1 row created.
+SELECT Book_code, Book_name, Book_pub_author
+  2  FROM Book_Data
+  3  WHERE Book_pub_year between '2001' and '2004' and Book_name like '%&%';
+
+ BOOK_CODE
+----------
+BOOK_NAME
+--------------------------------------------------------------------------------
+BOOK_PUB_AUTHOR
+--------------------------------------------------
+        10
+physic&
+Sarvanand
+QUERY 1.5
+SQL> desc staff_master
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STAFF_CODE                                NOT NULL NUMBER(8)
+ STAFF_NAME                                NOT NULL VARCHAR2(50)
+ DESIGN_CODE                                        NUMBER
+ DEPT_CODE                                          NUMBER
+ HIREDATE                                           DATE
+ STAFF_DOB                                          DATE
+ STAFF_ADDRESS                                      VARCHAR2(240)
+ MGR_CODE                                           NUMBER(8)
+ STAFF_SAL                                          NUMBER(10,2)
+SQL> insert into staff_master values(5, 'hari_prakash', 8, 9, ('01-jan-2001'), ('5-may-1985'), 'peerancheru', 9, 2000);
+
+1 row created.
+
+SQL> insert into staff_master values(9, 'sr_murthy', 9, 8, ('01-aug-2001'), ('5-may-1986'), 'sp colony', 9, 5000);
+
+1 row created.
+
+SQL> select staff_name from staff_master where staff_name like '%\_%'escape'\';
+
+STAFF_NAME
+--------------------------------------------------
+hari_prakash
+sr_murthy
+

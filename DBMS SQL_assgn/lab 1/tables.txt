@@ -1,0 +1,185 @@
+Tables
+  1  create table Staff_Master(
+  2  Staff_code number(8) not null,
+  3  Staff_Name varchar2(50) not null,
+  4  Design_code number,
+  5  Dept_code number,
+  6  HireDate date,
+  7  Staff_dob date,
+  8  Staff_address varchar2(240),
+  9  Mgr_code Number(8),
+ 10* Staff_sal number(10,2))
+SQL> /
+
+Table created.
+
+SQL> desc Staff_Master;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STAFF_CODE                                NOT NULL NUMBER(8)
+ STAFF_NAME                                NOT NULL VARCHAR2(50)
+ DESIGN_CODE                                        NUMBER
+ DEPT_CODE                                          NUMBER
+ HIREDATE                                           DATE
+ STAFF_DOB                                          DATE
+ STAFF_ADDRESS                                      VARCHAR2(240)
+ MGR_CODE                                           NUMBER(8)
+ STAFF_SAL                                          NUMBER(10,2)
+SQL> insert into staff_master values(1001, 'Shraddha', 1, 20,('7-dec-2020'), ('21-nov-1998'), 'Shanthi nagar', 85, 200000);
+
+1 row created.
+SQL> create table Book_Master(
+  2  Book_Code number(10) not null,
+  3  Book_Name varchar(50) not null,
+  4  Book_pub_year number,
+  5  Book_pub_author varchar2(50));
+SQL> desc Book_Master;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ BOOK_CODE                                 NOT NULL NUMBER(10)
+ BOOK_NAME                                 NOT NULL VARCHAR2(50)
+ BOOK_PUB_YEAR                                      NUMBER
+ BOOK_PUB_AUTHOR                                    VARCHAR2(50));
+
+
+SQL> insert into Book_Master values(50, 'Half Girlfriend', 40, 'Chetan Bhagat');
+
+1 row created.
+
+SQL>
+
+
+Table created.
+SQL> create table Emp(
+  2  Emp_Empno number(4) not null,
+  3  Emp_Ename varchar2(10),
+  4  Emp_job varchar2(9),
+  5  Emp_mgr number(4),
+  6  Emp_Hiredate date,
+  7  Emp_sal number(7,2),
+  8  Emp_Comm number(7,2),
+  9  Emp_Deptno number(2));
+
+Table created.
+
+SQL> desc Emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_EMPNO                                 NOT NULL NUMBER(4)
+ EMP_ENAME                                          VARCHAR2(10)
+ EMP_JOB                                            VARCHAR2(9)
+ EMP_MGR                                            NUMBER(4)
+ EMP_HIREDATE                                       DATE
+ EMP_SAL                                            NUMBER(7,2)
+ EMP_COMM                                           NUMBER(7,2)
+ EMP_DEPTNO                                         NUMBER(2)
+
+SQL> insert into emp values(43, 'Kulkarni', 'assistant', 2, ('7-june-2020'), 40000, 30.00, 5);
+
+1 row created.
+SQL> create table Designation_Master(
+  2  Design_code number(3) not null,
+  3  Design_name varchar2(50));
+
+Table created.
+
+SQL> desc Designation_Master;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DESIGN_CODE                               NOT NULL NUMBER(3)
+ DESIGN_NAME                                        VARCHAR2(50)
+
+SQL> insert into Designation_Master values(52, 'Vijay');
+
+1 row created.
+
+SQL> create table Department_Master(
+  2  Dept_code number(2) not null,
+  3  Dept_name varchar2(50));
+
+Table created.
+
+SQL> desc Department_Master;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPT_CODE                                 NOT NULL NUMBER(2)
+ DEPT_NAME                                          VARCHAR2(50)
+               
+SQL> insert into Department_Master values(10, 'Capgemini');
+
+1 row created.
+
+SQL>  1  create table Student_Master(
+  2  Student_Code number(6) not null,
+  3  Student_name varchar2(50) not null,
+  4  Dept_code number(2),
+  5  Student_dob date,
+  6  Student_address varchar2(240)
+  7* );
+
+Table created.
+
+SQL> desc Student_Master;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_CODE                              NOT NULL NUMBER(6)
+ STUDENT_NAME                              NOT NULL VARCHAR2(50)
+ DEPT_CODE                                          NUMBER(2)
+ STUDENT_DOB                                        DATE
+ STUDENT_ADDRESS                                    VARCHAR2(240)
+
+  1* insert into Student_Master values(26, 'Gayatri', 8, ('01-jan-1999'), 'attapur')
+SQL> /
+
+1 row created.
+
+SQL> create table student_marks(
+  2  student_code number(6),
+  3  student_year number null,
+  4  subject1 number(3),
+  5  subject2 number(3),
+  6  subject3 number(3));
+
+Table created.
+
+SQL> desc student_master;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_CODE                              NOT NULL NUMBER(6)
+ STUDENT_NAME                              NOT NULL VARCHAR2(50)
+ DEPT_CODE                                          NUMBER(2)
+ STUDENT_DOB                                        DATE
+ STUDENT_ADDRESS                                    VARCHAR2(240)
+
+SQL> insert into student_master values(44, 'vinay', 26, ('17-june-1998'), 'suncity');
+
+1 row created.
+
+SQL> create table book_transactions(
+  2  book_code number,
+  3  student_code number,
+  4  staff_code number,
+  5  book_issue_date date not null,
+  6  book_expected_return_date date not null,
+  7  book_actual_return_date date);
+book-issue_date date not null,
+    
+
+Table created.
+
+SQL> desc book_transactions
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ BOOK_CODE                                          NUMBER
+ STUDENT_CODE                                       NUMBER
+ STAFF_CODE                                         NUMBER
+ BOOK_ISSUE_DATE                           NOT NULL DATE
+ BOOK_EXPECTED_RETURN_DATE                 NOT NULL DATE
+ BOOK_ACTUAL_RETURN_DATE                            DATE
+
+SQL> insert into book_transactions values(2404, 49, 87, ('21-jan-2020'), ('28-jan-2020'), ('30-jan-2020'));
+
+1 row created.
+
+
+

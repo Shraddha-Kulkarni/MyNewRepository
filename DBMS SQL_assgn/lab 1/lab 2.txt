@@ -1,0 +1,239 @@
+2.1
+
+1 ans:
+SQL> desc staff_master;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STAFF_CODE                                NOT NULL NUMBER(8)
+ STAFF_NAME                                NOT NULL VARCHAR2(50)
+ DESIGN_CODE                                        NUMBER
+ DEPT_CODE                                          NUMBER
+ HIREDATE                                           DATE
+ STAFF_DOB                                          DATE
+ STAFF_ADDRESS                                      VARCHAR2(240)
+ MGR_CODE                                           NUMBER(8)
+ STAFF_SAL                                          NUMBER(10,2)
+
+SQL> insert into staff_master values(8, 'harish', 85, 10, ('01-nov-2005'), ('18-mar-1985'), 'himayathsagar', 75, 50000);
+
+1 row created.
+ SQL> SELECT dept_code, lpad(AVG(staff_sal), 15, '$') as Salary FROM staff_master GROUP BY dept_code ;
+
+ DEPT_CODE SALARY
+---------- ------------------------------------------------------------
+        20 $$$$$$$$$200000
+        10 $$$$$$$$$$50000
+
+2 ans:
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select student_name, to_char(student_dob,'month dd yyyy')
+  2  as student_dob from student_master where
+  3  to_char(student_dob,'day') like ('%saturday%') or
+  4* to_char(student_dob,'day')like('%sunday%')
+SQL> /
+
+STUDENT_NAME
+--------------------------------------------------
+STUDENT_DOB
+--------------------------------------------
+nitin
+january   25 2020
+
+3 ans:
+SQL> ed
+Wrote file afiedt.buf
+
+  1  create table staff_details(
+  2  staff_name varchar(25),
+  3  months_worked number(20),
+  4* id number(5))
+SQL> /
+
+Table created.
+
+SQL> insert into staff_details values('siri', 10, 85);
+
+1 row created.
+
+SQL> insert into staff_details values('sunil', 45, 18);
+
+1 row created.
+
+SQL> insert into staff_details values('sai', 50, 19);
+
+1 row created.
+
+SQL> select staff_name, months_worked from staff_details order by months_worked asc;
+
+STAFF_NAME                MONTHS_WORKED
+------------------------- -------------
+siri                                 10
+sunil                                45
+sai                                  50
+
+4 ans:
+SQL> insert into staff_master values(1, 'a', 25, 19, ('01-dec-1999'), ('14-jan-1935'), 'himayath sagar', 9, 9000);
+
+1 row created.
+
+SQL> insert into staff_master values(2, 'b', 5, 9, ('12-dec-2000'), ('15-aug-1928'), 'hema nagar', 29, 90000);
+
+1 row created.
+
+SQL> insert into staff_master values(3, 'c', 29, 7, ('8-dec-2004'), ('25-june-1976'), 'sr nagar', 39, 80000);
+
+1 row created.
+
+SQL
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select staff_name, staff_code, staff_address, design_code, dept_code from staff_master where to_char(hiredate, 'mon')='dec'
+  2* and to_number(to_char(hiredate, 'dd'))<=15
+SQL> /
+
+STAFF_NAME                                         STAFF_CODE
+-------------------------------------------------- ----------
+STAFF_ADDRESS
+--------------------------------------------------------------------------------
+DESIGN_CODE  DEPT_CODE
+----------- ----------
+Shraddha                                                 1001
+Shanthi nagar
+          1         20
+
+a                                                           1
+himayath sagar
+         25         19
+
+STAFF_NAME                                         STAFF_CODE
+-------------------------------------------------- ----------
+STAFF_ADDRESS
+--------------------------------------------------------------------------------
+DESIGN_CODE  DEPT_CODE
+----------- ----------
+
+b                                                           2
+hema nagar
+          5          9
+
+c                                                           3
+sr nagar
+
+STAFF_NAME                                         STAFF_CODE
+-------------------------------------------------- ----------
+STAFF_ADDRESS
+--------------------------------------------------------------------------------
+DESIGN_CODE  DEPT_CODE
+----------- ----------
+         29          7
+
+5 ans:
+
+SQL> select staff_name, Staff_Sal, CASE
+  2  when staff_sal>=50000 then 'A'
+  3  when staff_sal>=25000 and staff_sal<50000 then 'B'
+  4  when staff_sal>=10000 and staff_sal<25000 then 'C'
+  5  ELSE
+  6  'D'
+  7  end case from staff_master;
+
+STAFF_NAME                                          STAFF_SAL C
+-------------------------------------------------- ---------- -
+vinaykumar                                              23000 C
+srinath_kumar                                           24000 C
+kishore                                                 26000 B
+
+6 ans:
+
+SQL> select staff_name,HireDate, to_char(hiredate,'dy') as "day" from staff_Master order by to_char(hiredate,'d');
+
+STAFF_NAME                                         HIREDATE  day
+-------------------------------------------------- --------- ------------
+kishore                                            05-DEC-00 tue
+vinaykumar                                         01-JAN-00 sat
+srinath_kumar                                      01-JAN-00 sat
+
+7 ans:
+SQL> select instr('mississippi','i', 1,3) from dual;
+
+INSTR('MISSISSIPPI','I',1,3)
+----------------------------
+                           8
+9 ans:
+
+SQL> create table stu(
+  2  student_name varchar(50),
+  3  student_code number(5),
+  4  dept_code number(10));
+
+Table created.
+
+SQL> insert into stu values('a', 1, 20);
+
+1 row created.
+
+SQL> insert into stu values('b', 2, 30);
+
+1 row created.
+
+SQL> insert into stu values('c', 3, 20);
+
+1 row created.
+
+SQL> select student_name, student_code decode(dept_code,20,'electricals',30,'electronics') from stu;
+select student_name, student_code, decode(dept_code,20,'electricals',30,'electronics') from stu
+
+
+SQL
+
+
+STUDENT_NAME                                       STUDENT_CODE DECODE(DEPT
+-------------------------------------------------- ------------ -----------
+a                                                             1 electricals
+b                                                             2 electronics
+c                                                             3 electricals
+
+QUERY 2.2
+
+1 sol:
+SQL> select dept_code, avg(staff_sal), min(staff_sal), max(staff_sal)from staff_master group by dept_code having avg(staff_sal)>10;
+
+ DEPT_CODE AVG(STAFF_SAL) MIN(STAFF_SAL) MAX(STAFF_SAL)
+---------- -------------- -------------- --------------
+         6           9000           9000           9000
+        20         200000         200000         200000
+         8           5000           5000           5000
+         7          80000          80000          80000
+        10          50000          50000          50000
+        19           9000           9000           9000
+         9          46000           2000          90000
+
+7 rows selected.
+
+2 sol:
+SQL> 
+  1* select dept_code, sum(total_number_of_managers) as "Total Number of Managers" from dept1 group by dept_code
+SQL> /
+
+ DEPT_CODE Total Number of Managers
+---------- ------------------------
+         1                       13
+         6                       38
+         4                       47
+         8                       35
+
+3 sol
+SQL> select dept_code, sum(staff_sal) from staff_master group by dept_code having avg(staff_sal) >30000;
+
+ DEPT_CODE SUM(STAFF_SAL)
+---------- --------------
+        20         200000
+         7          80000
+        10          50000
+         9         125000
+        12          40000
