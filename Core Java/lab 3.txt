@@ -1,0 +1,299 @@
+3.1
+
+package VJIT;
+
+
+public class Add_String {
+	public static void main(String args[])
+	{
+		String s1="Shraddha";
+		String s2=s1.concat(s1);
+		System.out.println(s2);
+		{
+			for(int i=0;i< s2.length();i++)
+			{
+				if(i%2!=0)
+				{
+					s2=s2.substring(0,i-1)+ "#"+ s2.substring(i,s2.length());
+				}
+			}
+			System.out.println(s2);
+		}
+		{
+			char[] mask=new char[256];
+			for(int j=0;j<s2.length();j++)
+				mask[s2.charAt(j)]++;
+			for(int j=0;j<s1.length();j++)
+			{
+				if(mask[s1.charAt(j)]==0)
+				System.out.println(s1.charAt(j));
+			}
+		} 
+		for(int i=0;i<s1.length();i++)
+		{
+			int a = i%2;
+			if(a==0)
+				System.out.print(Character.toLowerCase(s1.charAt(a)));
+			else
+				System.out.print(Character.toUpperCase(s1.charAt(a)));
+		}
+	}
+}
+
+Output:
+
+ShraddhaShraddha
+#h#a#d#a#h#a#d#a
+S
+r
+sHsHsHsH
+
+3.2
+
+package VJIT;
+import java.util.Arrays;
+public class SA 
+{
+	static boolean isAlphabaticOrder(String s)
+	{
+		boolean flag = false;
+		byte[] a = s.getBytes();
+		Arrays.sort(a);
+		for(int i=0;i<s.length();i++)
+		{
+			if(a[i] != s.charAt(i))
+				return flag;
+			else
+				return !flag;
+		}
+		return flag;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s="ant";
+		if(isAlphabaticOrder(s))
+			System.out.println("Positive String");
+		else
+			System.out.println("Negative String");
+
+	}
+
+}
+
+Output:
+
+Positive String
+
+3.3
+package VJIT;
+import java.time.*;
+import java.util.*;
+public class Diff {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+LocalDate pdate=LocalDate.of(2019,6, 17);
+LocalDate now=LocalDate.now();
+Period diff=Period.between(pdate,now);
+System.out.printf("\n Difference is %d years, %d months, and %d days\n",
+		diff.getYears(), diff.getMonths(), diff.getDays());
+}
+
+}
+
+Output:			
+ Difference is 0 years, 7 months, and 13 days
+
+3.4
+
+package VJIT;
+import java.time.*;
+import java.util.*;
+public class Diff {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+LocalDate pdate=LocalDate.of(2019,6, 17);
+LocalDate p1date=LocalDate.of(2020,11,21);
+Period diff=Period.between(pdate,p1date);
+System.out.printf("\n Difference is %d years, %d months, and %d days\n",
+		diff.getYears(), diff.getMonths(), diff.getDays());
+}
+
+}
+
+Output:
+ Difference is 1 years, 5 months, and 4 days
+
+3.5
+package VJIT;
+import java.time.*;
+public class Warranty { 
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+LocalDate pdate=LocalDate.of(2010,06,21);
+System.out.printf("Purchase Date %d-%s \n",pdate.getYear(),pdate.getMonth());
+LocalDate p1date=LocalDate.of(2020,11,21);
+System.out.printf("The warranty period will expire on %d-%s",p1date.getYear(),p1date.getMonth());
+Period diff=Period.between(pdate,p1date);
+System.out.printf("\n Warranty period of this product is  %d years, %d months \n",
+		diff.getYears(), diff.getMonths());
+}
+
+}
+Output:
+Purchase Date 2010-JUNE 
+The warranty period will expire on 2020-NOVEMBER
+ Warranty period of this product is  10 years, 5 months 
+
+3.6
+
+
+
+package VJIT;
+import java.time.*;  
+class ZonedDateTimeExample{  
+  public static void main(String[] args) 
+  {  
+      ZoneId zone1=ZoneId.of("Europe/London");
+      LocalTime now=LocalTime.now(zone1);
+      System.out.println(now);
+      }  
+}
+Output:
+
+17:32:02.061
+
+3.7
+
+package VJIT;
+import java.time.*;
+public class PersonDetails {
+	String FirstName;
+	String LastName;
+	String Gender;
+	int Age;
+double Weight;
+
+PersonDetails(){
+	FirstName="Divya";
+	LastName="Bharati";
+	Gender="F";
+   Weight=85.5;
+}
+public void calculateage() {
+	LocalDate p1=LocalDate.of(1998,11,21);
+	LocalDate now=LocalDate.now();
+    Period diff=Period.between(p1,now);
+    System.out.println("Age of the person is "+diff.getYears());
+}
+public void getFullname() {
+	String s=FirstName.concat(LastName);
+	System.out.println("Name of the person is "+s);
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+PersonDetails pd=new PersonDetails();
+System.out.println("Person Details");
+pd.getFullname();
+System.out.println("Gender: "+pd.Gender);
+System.out.println("Weight: "+pd.Weight);
+pd.calculateage();
+	}
+}
+
+Output:
+Person Details
+Name of the person is DivyaBharati
+Gender: F
+Weight: 85.5
+Age of the person is 21
+
+
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+
+	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

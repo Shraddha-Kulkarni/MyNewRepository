@@ -1,0 +1,5316 @@
+
+12.1
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class Log4jDemo {
+
+  //create a logger for Log4jDemo class
+    static Logger logger=LogManager.getLogger(Log4jDemo.class.getName());
+
+public static void main(String args[]) {
+
+  // create log messages for each priority level
+    logger.error("logged");
+    logger.debug("not logger");
+    logger.info("log info");
+    logger.warn("warning");
+    logger.fatal("system fatal");
+    
+      }
+}
+
+OUTPUT:
+2020-02-13 14:37:52,302 main ERROR PatternLayout contains an invalid element or attribute "patter"
+logged
+not logger
+log info
+warning
+system fatal
+----------------------------------------------------------------------------------------------------------
+12.2.
+
+package labbean;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import logPack.Log4jDemo;
+
+@SuppressWarnings("unused")
+public class Message
+{
+
+//create a logger for Message class
+	static Logger logg=LogManager.getLogger(Message.class.getName());
+
+private String msg;
+
+public void setMessage(String msg) 
+     {
+            this.msg = msg;
+            //this.getMessage();
+            logg.error("error message");
+        	logg.debug("debug message");
+        	logg.info("info message");
+        	logg.warn("warning message");
+        	logg.fatal("fatal message");
+            
+            //log the messages for each priority level
+      }
+public String getMessage() 
+       {
+
+            //log messages for each priority level
+	        logg.error("logged");
+          	logg.debug("not logger");
+        	logg.info("log info");
+	        logg.warn("warning");
+	        logg.fatal("system fatal");
+	        
+            return msg;
+       }
+}
+OUTPUT:
+2020-02-13 14:48:11,592 main ERROR PatternLayout contains an invalid element or attribute "patter"
+logged
+not logger
+log info
+warning
+system fatal
+----------------------------------------------------------------------------------------------------------
+package logPack;
+
+import labbean.Message;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+   public class Log4jDemo2 
+   {
+
+    //create a logger for Log4jDemo3 class
+	static Logger logger=LogManager.getLogger(Log4jDemo2.class.getName());
+
+     public static void main(String args[]) 
+     {
+    	 
+
+             //create an instance of Message class
+	         Message m=new Message();
+             //call setMessage() method
+	         m.setMessage("msg");
+	         
+             //print the log messages using getMessage() method
+	         m.getMessage();
+	
+             // write log message statements for each priority level
+	         logger.error("logged");
+	         logger.debug("not logger");
+	         logger.info("log info");
+	         logger.warn("warning");
+	         logger.fatal("system fatal");
+      }
+}
+
+OUTPUT:
+2020-02-13 14:56:12,959 main ERROR PatternLayout contains an invalid element or attribute "patter"
+error message
+info message
+warning message
+fatal message
+logged
+log info
+warning
+system fatal
+logged
+not logger
+log info
+warning
+system fatal
+
+12.3
+
+package logPack;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import labbean.Message;
+
+public class Log4jDemo1
+{
+	static Logger log=LogManager.getLogger(Message.class.getName());
+   //create a logger for Log4jDemo2 class
+
+    public static void main(String args[])
+    {
+
+        for(int i=1 ; i<50000; i++)
+        {
+           System.out.println("Counter = " + i);
+           log.debug("This is my debug message. Counter = " + i);
+           log.error("error message");
+       	   log.info("info message");
+       	   log.warn("warning message");
+       	   log.fatal("fatal message");
+       	   
+           // write log message statements for remaining priority levels 
+		  //in the same way
+            }
+      }
+}
+OUTPUT:
+error message
+info message
+warning message
+fatal message
+Counter = 48975
+error message
+info message
+warning message
+fatal message
+Counter = 48976
+error message
+info message
+warning message
+fatal message
+Counter = 48977
+error message
+info message
+warning message
+fatal message
+Counter = 48978
+error message
+info message
+warning message
+fatal message
+Counter = 48979
+error message
+info message
+warning message
+fatal message
+Counter = 48980
+error message
+info message
+warning message
+fatal message
+Counter = 48981
+error message
+info message
+warning message
+fatal message
+Counter = 48982
+error message
+info message
+warning message
+fatal message
+Counter = 48983
+error message
+info message
+warning message
+fatal message
+Counter = 48984
+error message
+info message
+warning message
+fatal message
+Counter = 48985
+error message
+info message
+warning message
+fatal message
+Counter = 48986
+error message
+info message
+warning message
+fatal message
+Counter = 48987
+error message
+info message
+warning message
+fatal message
+Counter = 48988
+error message
+info message
+warning message
+fatal message
+Counter = 48989
+error message
+info message
+warning message
+fatal message
+Counter = 48990
+error message
+info message
+warning message
+fatal message
+Counter = 48991
+error message
+info message
+warning message
+fatal message
+Counter = 48992
+error message
+info message
+warning message
+fatal message
+Counter = 48993
+error message
+info message
+warning message
+fatal message
+Counter = 48994
+error message
+info message
+warning message
+fatal message
+Counter = 48995
+error message
+info message
+warning message
+fatal message
+Counter = 48996
+error message
+info message
+warning message
+fatal message
+Counter = 48997
+error message
+info message
+warning message
+fatal message
+Counter = 48998
+error message
+info message
+warning message
+fatal message
+Counter = 48999
+error message
+info message
+warning message
+fatal message
+Counter = 49000
+error message
+info message
+warning message
+fatal message
+Counter = 49001
+error message
+info message
+warning message
+fatal message
+Counter = 49002
+error message
+info message
+warning message
+fatal message
+Counter = 49003
+error message
+info message
+warning message
+fatal message
+Counter = 49004
+error message
+info message
+warning message
+fatal message
+Counter = 49005
+error message
+info message
+warning message
+fatal message
+Counter = 49006
+error message
+info message
+warning message
+fatal message
+Counter = 49007
+error message
+info message
+warning message
+fatal message
+Counter = 49008
+error message
+info message
+warning message
+fatal message
+Counter = 49009
+error message
+info message
+warning message
+fatal message
+Counter = 49010
+error message
+info message
+warning message
+fatal message
+Counter = 49011
+error message
+info message
+warning message
+fatal message
+Counter = 49012
+error message
+info message
+warning message
+fatal message
+Counter = 49013
+error message
+info message
+warning message
+fatal message
+Counter = 49014
+error message
+info message
+warning message
+fatal message
+Counter = 49015
+error message
+info message
+warning message
+fatal message
+Counter = 49016
+error message
+info message
+warning message
+fatal message
+Counter = 49017
+error message
+info message
+warning message
+fatal message
+Counter = 49018
+error message
+info message
+warning message
+fatal message
+Counter = 49019
+error message
+info message
+warning message
+fatal message
+Counter = 49020
+error message
+info message
+warning message
+fatal message
+Counter = 49021
+error message
+info message
+warning message
+fatal message
+Counter = 49022
+error message
+info message
+warning message
+fatal message
+Counter = 49023
+error message
+info message
+warning message
+fatal message
+Counter = 49024
+error message
+info message
+warning message
+fatal message
+Counter = 49025
+error message
+info message
+warning message
+fatal message
+Counter = 49026
+error message
+info message
+warning message
+fatal message
+Counter = 49027
+error message
+info message
+warning message
+fatal message
+Counter = 49028
+error message
+info message
+warning message
+fatal message
+Counter = 49029
+error message
+info message
+warning message
+fatal message
+Counter = 49030
+error message
+info message
+warning message
+fatal message
+Counter = 49031
+error message
+info message
+warning message
+fatal message
+Counter = 49032
+error message
+info message
+warning message
+fatal message
+Counter = 49033
+error message
+info message
+warning message
+fatal message
+Counter = 49034
+error message
+info message
+warning message
+fatal message
+Counter = 49035
+error message
+info message
+warning message
+fatal message
+Counter = 49036
+error message
+info message
+warning message
+fatal message
+Counter = 49037
+error message
+info message
+warning message
+fatal message
+Counter = 49038
+error message
+info message
+warning message
+fatal message
+Counter = 49039
+error message
+info message
+warning message
+fatal message
+Counter = 49040
+error message
+info message
+warning message
+fatal message
+Counter = 49041
+error message
+info message
+warning message
+fatal message
+Counter = 49042
+error message
+info message
+warning message
+fatal message
+Counter = 49043
+error message
+info message
+warning message
+fatal message
+Counter = 49044
+error message
+info message
+warning message
+fatal message
+Counter = 49045
+error message
+info message
+warning message
+fatal message
+Counter = 49046
+error message
+info message
+warning message
+fatal message
+Counter = 49047
+error message
+info message
+warning message
+fatal message
+Counter = 49048
+error message
+info message
+warning message
+fatal message
+Counter = 49049
+error message
+info message
+warning message
+fatal message
+Counter = 49050
+error message
+info message
+warning message
+fatal message
+Counter = 49051
+error message
+info message
+warning message
+fatal message
+Counter = 49052
+error message
+info message
+warning message
+fatal message
+Counter = 49053
+error message
+info message
+warning message
+fatal message
+Counter = 49054
+error message
+info message
+warning message
+fatal message
+Counter = 49055
+error message
+info message
+warning message
+fatal message
+Counter = 49056
+error message
+info message
+warning message
+fatal message
+Counter = 49057
+error message
+info message
+warning message
+fatal message
+Counter = 49058
+error message
+info message
+warning message
+fatal message
+Counter = 49059
+error message
+info message
+warning message
+fatal message
+Counter = 49060
+error message
+info message
+warning message
+fatal message
+Counter = 49061
+error message
+info message
+warning message
+fatal message
+Counter = 49062
+error message
+info message
+warning message
+fatal message
+Counter = 49063
+error message
+info message
+warning message
+fatal message
+Counter = 49064
+error message
+info message
+warning message
+fatal message
+Counter = 49065
+error message
+info message
+warning message
+fatal message
+Counter = 49066
+error message
+info message
+warning message
+fatal message
+Counter = 49067
+error message
+info message
+warning message
+fatal message
+Counter = 49068
+error message
+info message
+warning message
+fatal message
+Counter = 49069
+error message
+info message
+warning message
+fatal message
+Counter = 49070
+error message
+info message
+warning message
+fatal message
+Counter = 49071
+error message
+info message
+warning message
+fatal message
+Counter = 49072
+error message
+info message
+warning message
+fatal message
+Counter = 49073
+error message
+info message
+warning message
+fatal message
+Counter = 49074
+error message
+info message
+warning message
+fatal message
+Counter = 49075
+error message
+info message
+warning message
+fatal message
+Counter = 49076
+error message
+info message
+warning message
+fatal message
+Counter = 49077
+error message
+info message
+warning message
+fatal message
+Counter = 49078
+error message
+info message
+warning message
+fatal message
+Counter = 49079
+error message
+info message
+warning message
+fatal message
+Counter = 49080
+error message
+info message
+warning message
+fatal message
+Counter = 49081
+error message
+info message
+warning message
+fatal message
+Counter = 49082
+error message
+info message
+warning message
+fatal message
+Counter = 49083
+error message
+info message
+warning message
+fatal message
+Counter = 49084
+error message
+info message
+warning message
+fatal message
+Counter = 49085
+error message
+info message
+warning message
+fatal message
+Counter = 49086
+error message
+info message
+warning message
+fatal message
+Counter = 49087
+error message
+info message
+warning message
+fatal message
+Counter = 49088
+error message
+info message
+warning message
+fatal message
+Counter = 49089
+error message
+info message
+warning message
+fatal message
+Counter = 49090
+error message
+info message
+warning message
+fatal message
+Counter = 49091
+error message
+info message
+warning message
+fatal message
+Counter = 49092
+error message
+info message
+warning message
+fatal message
+Counter = 49093
+error message
+info message
+warning message
+fatal message
+Counter = 49094
+error message
+info message
+warning message
+fatal message
+Counter = 49095
+error message
+info message
+warning message
+fatal message
+Counter = 49096
+error message
+info message
+warning message
+fatal message
+Counter = 49097
+error message
+info message
+warning message
+fatal message
+Counter = 49098
+error message
+info message
+warning message
+fatal message
+Counter = 49099
+error message
+info message
+warning message
+fatal message
+Counter = 49100
+error message
+info message
+warning message
+fatal message
+Counter = 49101
+error message
+info message
+warning message
+fatal message
+Counter = 49102
+error message
+info message
+warning message
+fatal message
+Counter = 49103
+error message
+info message
+warning message
+fatal message
+Counter = 49104
+error message
+info message
+warning message
+fatal message
+Counter = 49105
+error message
+info message
+warning message
+fatal message
+Counter = 49106
+error message
+info message
+warning message
+fatal message
+Counter = 49107
+error message
+info message
+warning message
+fatal message
+Counter = 49108
+error message
+info message
+warning message
+fatal message
+Counter = 49109
+error message
+info message
+warning message
+fatal message
+Counter = 49110
+error message
+info message
+warning message
+fatal message
+Counter = 49111
+error message
+info message
+warning message
+fatal message
+Counter = 49112
+error message
+info message
+warning message
+fatal message
+Counter = 49113
+error message
+info message
+warning message
+fatal message
+Counter = 49114
+error message
+info message
+warning message
+fatal message
+Counter = 49115
+error message
+info message
+warning message
+fatal message
+Counter = 49116
+error message
+info message
+warning message
+fatal message
+Counter = 49117
+error message
+info message
+warning message
+fatal message
+Counter = 49118
+error message
+info message
+warning message
+fatal message
+Counter = 49119
+error message
+info message
+warning message
+fatal message
+Counter = 49120
+error message
+info message
+warning message
+fatal message
+Counter = 49121
+error message
+info message
+warning message
+fatal message
+Counter = 49122
+error message
+info message
+warning message
+fatal message
+Counter = 49123
+error message
+info message
+warning message
+fatal message
+Counter = 49124
+error message
+info message
+warning message
+fatal message
+Counter = 49125
+error message
+info message
+warning message
+fatal message
+Counter = 49126
+error message
+info message
+warning message
+fatal message
+Counter = 49127
+error message
+info message
+warning message
+fatal message
+Counter = 49128
+error message
+info message
+warning message
+fatal message
+Counter = 49129
+error message
+info message
+warning message
+fatal message
+Counter = 49130
+error message
+info message
+warning message
+fatal message
+Counter = 49131
+error message
+info message
+warning message
+fatal message
+Counter = 49132
+error message
+info message
+warning message
+fatal message
+Counter = 49133
+error message
+info message
+warning message
+fatal message
+Counter = 49134
+error message
+info message
+warning message
+fatal message
+Counter = 49135
+error message
+info message
+warning message
+fatal message
+Counter = 49136
+error message
+info message
+warning message
+fatal message
+Counter = 49137
+error message
+info message
+warning message
+fatal message
+Counter = 49138
+error message
+info message
+warning message
+fatal message
+Counter = 49139
+error message
+info message
+warning message
+fatal message
+Counter = 49140
+error message
+info message
+warning message
+fatal message
+Counter = 49141
+error message
+info message
+warning message
+fatal message
+Counter = 49142
+error message
+info message
+warning message
+fatal message
+Counter = 49143
+error message
+info message
+warning message
+fatal message
+Counter = 49144
+error message
+info message
+warning message
+fatal message
+Counter = 49145
+error message
+info message
+warning message
+fatal message
+Counter = 49146
+error message
+info message
+warning message
+fatal message
+Counter = 49147
+error message
+info message
+warning message
+fatal message
+Counter = 49148
+error message
+info message
+warning message
+fatal message
+Counter = 49149
+error message
+info message
+warning message
+fatal message
+Counter = 49150
+error message
+info message
+warning message
+fatal message
+Counter = 49151
+error message
+info message
+warning message
+fatal message
+Counter = 49152
+error message
+info message
+warning message
+fatal message
+Counter = 49153
+error message
+info message
+warning message
+fatal message
+Counter = 49154
+error message
+info message
+warning message
+fatal message
+Counter = 49155
+error message
+info message
+warning message
+fatal message
+Counter = 49156
+error message
+info message
+warning message
+fatal message
+Counter = 49157
+error message
+info message
+warning message
+fatal message
+Counter = 49158
+error message
+info message
+warning message
+fatal message
+Counter = 49159
+error message
+info message
+warning message
+fatal message
+Counter = 49160
+error message
+info message
+warning message
+fatal message
+Counter = 49161
+error message
+info message
+warning message
+fatal message
+Counter = 49162
+error message
+info message
+warning message
+fatal message
+Counter = 49163
+error message
+info message
+warning message
+fatal message
+Counter = 49164
+error message
+info message
+warning message
+fatal message
+Counter = 49165
+error message
+info message
+warning message
+fatal message
+Counter = 49166
+error message
+info message
+warning message
+fatal message
+Counter = 49167
+error message
+info message
+warning message
+fatal message
+Counter = 49168
+error message
+info message
+warning message
+fatal message
+Counter = 49169
+error message
+info message
+warning message
+fatal message
+Counter = 49170
+error message
+info message
+warning message
+fatal message
+Counter = 49171
+error message
+info message
+warning message
+fatal message
+Counter = 49172
+error message
+info message
+warning message
+fatal message
+Counter = 49173
+error message
+info message
+warning message
+fatal message
+Counter = 49174
+error message
+info message
+warning message
+fatal message
+Counter = 49175
+error message
+info message
+warning message
+fatal message
+Counter = 49176
+error message
+info message
+warning message
+fatal message
+Counter = 49177
+error message
+info message
+warning message
+fatal message
+Counter = 49178
+error message
+info message
+warning message
+fatal message
+Counter = 49179
+error message
+info message
+warning message
+fatal message
+Counter = 49180
+error message
+info message
+warning message
+fatal message
+Counter = 49181
+error message
+info message
+warning message
+fatal message
+Counter = 49182
+error message
+info message
+warning message
+fatal message
+Counter = 49183
+error message
+info message
+warning message
+fatal message
+Counter = 49184
+error message
+info message
+warning message
+fatal message
+Counter = 49185
+error message
+info message
+warning message
+fatal message
+Counter = 49186
+error message
+info message
+warning message
+fatal message
+Counter = 49187
+error message
+info message
+warning message
+fatal message
+Counter = 49188
+error message
+info message
+warning message
+fatal message
+Counter = 49189
+error message
+info message
+warning message
+fatal message
+Counter = 49190
+error message
+info message
+warning message
+fatal message
+Counter = 49191
+error message
+info message
+warning message
+fatal message
+Counter = 49192
+error message
+info message
+warning message
+fatal message
+Counter = 49193
+error message
+info message
+warning message
+fatal message
+Counter = 49194
+error message
+info message
+warning message
+fatal message
+Counter = 49195
+error message
+info message
+warning message
+fatal message
+Counter = 49196
+error message
+info message
+warning message
+fatal message
+Counter = 49197
+error message
+info message
+warning message
+fatal message
+Counter = 49198
+error message
+info message
+warning message
+fatal message
+Counter = 49199
+error message
+info message
+warning message
+fatal message
+Counter = 49200
+error message
+info message
+warning message
+fatal message
+Counter = 49201
+error message
+info message
+warning message
+fatal message
+Counter = 49202
+error message
+info message
+warning message
+fatal message
+Counter = 49203
+error message
+info message
+warning message
+fatal message
+Counter = 49204
+error message
+info message
+warning message
+fatal message
+Counter = 49205
+error message
+info message
+warning message
+fatal message
+Counter = 49206
+error message
+info message
+warning message
+fatal message
+Counter = 49207
+error message
+info message
+warning message
+fatal message
+Counter = 49208
+error message
+info message
+warning message
+fatal message
+Counter = 49209
+error message
+info message
+warning message
+fatal message
+Counter = 49210
+error message
+info message
+warning message
+fatal message
+Counter = 49211
+error message
+info message
+warning message
+fatal message
+Counter = 49212
+error message
+info message
+warning message
+fatal message
+Counter = 49213
+error message
+info message
+warning message
+fatal message
+Counter = 49214
+error message
+info message
+warning message
+fatal message
+Counter = 49215
+error message
+info message
+warning message
+fatal message
+Counter = 49216
+error message
+info message
+warning message
+fatal message
+Counter = 49217
+error message
+info message
+warning message
+fatal message
+Counter = 49218
+error message
+info message
+warning message
+fatal message
+Counter = 49219
+error message
+info message
+warning message
+fatal message
+Counter = 49220
+error message
+info message
+warning message
+fatal message
+Counter = 49221
+error message
+info message
+warning message
+fatal message
+Counter = 49222
+error message
+info message
+warning message
+fatal message
+Counter = 49223
+error message
+info message
+warning message
+fatal message
+Counter = 49224
+error message
+info message
+warning message
+fatal message
+Counter = 49225
+error message
+info message
+warning message
+fatal message
+Counter = 49226
+error message
+info message
+warning message
+fatal message
+Counter = 49227
+error message
+info message
+warning message
+fatal message
+Counter = 49228
+error message
+info message
+warning message
+fatal message
+Counter = 49229
+error message
+info message
+warning message
+fatal message
+Counter = 49230
+error message
+info message
+warning message
+fatal message
+Counter = 49231
+error message
+info message
+warning message
+fatal message
+Counter = 49232
+error message
+info message
+warning message
+fatal message
+Counter = 49233
+error message
+info message
+warning message
+fatal message
+Counter = 49234
+error message
+info message
+warning message
+fatal message
+Counter = 49235
+error message
+info message
+warning message
+fatal message
+Counter = 49236
+error message
+info message
+warning message
+fatal message
+Counter = 49237
+error message
+info message
+warning message
+fatal message
+Counter = 49238
+error message
+info message
+warning message
+fatal message
+Counter = 49239
+error message
+info message
+warning message
+fatal message
+Counter = 49240
+error message
+info message
+warning message
+fatal message
+Counter = 49241
+error message
+info message
+warning message
+fatal message
+Counter = 49242
+error message
+info message
+warning message
+fatal message
+Counter = 49243
+error message
+info message
+warning message
+fatal message
+Counter = 49244
+error message
+info message
+warning message
+fatal message
+Counter = 49245
+error message
+info message
+warning message
+fatal message
+Counter = 49246
+error message
+info message
+warning message
+fatal message
+Counter = 49247
+error message
+info message
+warning message
+fatal message
+Counter = 49248
+error message
+info message
+warning message
+fatal message
+Counter = 49249
+error message
+info message
+warning message
+fatal message
+Counter = 49250
+error message
+info message
+warning message
+fatal message
+Counter = 49251
+error message
+info message
+warning message
+fatal message
+Counter = 49252
+error message
+info message
+warning message
+fatal message
+Counter = 49253
+error message
+info message
+warning message
+fatal message
+Counter = 49254
+error message
+info message
+warning message
+fatal message
+Counter = 49255
+error message
+info message
+warning message
+fatal message
+Counter = 49256
+error message
+info message
+warning message
+fatal message
+Counter = 49257
+error message
+info message
+warning message
+fatal message
+Counter = 49258
+error message
+info message
+warning message
+fatal message
+Counter = 49259
+error message
+info message
+warning message
+fatal message
+Counter = 49260
+error message
+info message
+warning message
+fatal message
+Counter = 49261
+error message
+info message
+warning message
+fatal message
+Counter = 49262
+error message
+info message
+warning message
+fatal message
+Counter = 49263
+error message
+info message
+warning message
+fatal message
+Counter = 49264
+error message
+info message
+warning message
+fatal message
+Counter = 49265
+error message
+info message
+warning message
+fatal message
+Counter = 49266
+error message
+info message
+warning message
+fatal message
+Counter = 49267
+error message
+info message
+warning message
+fatal message
+Counter = 49268
+error message
+info message
+warning message
+fatal message
+Counter = 49269
+error message
+info message
+warning message
+fatal message
+Counter = 49270
+error message
+info message
+warning message
+fatal message
+Counter = 49271
+error message
+info message
+warning message
+fatal message
+Counter = 49272
+error message
+info message
+warning message
+fatal message
+Counter = 49273
+error message
+info message
+warning message
+fatal message
+Counter = 49274
+error message
+info message
+warning message
+fatal message
+Counter = 49275
+error message
+info message
+warning message
+fatal message
+Counter = 49276
+error message
+info message
+warning message
+fatal message
+Counter = 49277
+error message
+info message
+warning message
+fatal message
+Counter = 49278
+error message
+info message
+warning message
+fatal message
+Counter = 49279
+error message
+info message
+warning message
+fatal message
+Counter = 49280
+error message
+info message
+warning message
+fatal message
+Counter = 49281
+error message
+info message
+warning message
+fatal message
+Counter = 49282
+error message
+info message
+warning message
+fatal message
+Counter = 49283
+error message
+info message
+warning message
+fatal message
+Counter = 49284
+error message
+info message
+warning message
+fatal message
+Counter = 49285
+error message
+info message
+warning message
+fatal message
+Counter = 49286
+error message
+info message
+warning message
+fatal message
+Counter = 49287
+error message
+info message
+warning message
+fatal message
+Counter = 49288
+error message
+info message
+warning message
+fatal message
+Counter = 49289
+error message
+info message
+warning message
+fatal message
+Counter = 49290
+error message
+info message
+warning message
+fatal message
+Counter = 49291
+error message
+info message
+warning message
+fatal message
+Counter = 49292
+error message
+info message
+warning message
+fatal message
+Counter = 49293
+error message
+info message
+warning message
+fatal message
+Counter = 49294
+error message
+info message
+warning message
+fatal message
+Counter = 49295
+error message
+info message
+warning message
+fatal message
+Counter = 49296
+error message
+info message
+warning message
+fatal message
+Counter = 49297
+error message
+info message
+warning message
+fatal message
+Counter = 49298
+error message
+info message
+warning message
+fatal message
+Counter = 49299
+error message
+info message
+warning message
+fatal message
+Counter = 49300
+error message
+info message
+warning message
+fatal message
+Counter = 49301
+error message
+info message
+warning message
+fatal message
+Counter = 49302
+error message
+info message
+warning message
+fatal message
+Counter = 49303
+error message
+info message
+warning message
+fatal message
+Counter = 49304
+error message
+info message
+warning message
+fatal message
+Counter = 49305
+error message
+info message
+warning message
+fatal message
+Counter = 49306
+error message
+info message
+warning message
+fatal message
+Counter = 49307
+error message
+info message
+warning message
+fatal message
+Counter = 49308
+error message
+info message
+warning message
+fatal message
+Counter = 49309
+error message
+info message
+warning message
+fatal message
+Counter = 49310
+error message
+info message
+warning message
+fatal message
+Counter = 49311
+error message
+info message
+warning message
+fatal message
+Counter = 49312
+error message
+info message
+warning message
+fatal message
+Counter = 49313
+error message
+info message
+warning message
+fatal message
+Counter = 49314
+error message
+info message
+warning message
+fatal message
+Counter = 49315
+error message
+info message
+warning message
+fatal message
+Counter = 49316
+error message
+info message
+warning message
+fatal message
+Counter = 49317
+error message
+info message
+warning message
+fatal message
+Counter = 49318
+error message
+info message
+warning message
+fatal message
+Counter = 49319
+error message
+info message
+warning message
+fatal message
+Counter = 49320
+error message
+info message
+warning message
+fatal message
+Counter = 49321
+error message
+info message
+warning message
+fatal message
+Counter = 49322
+error message
+info message
+warning message
+fatal message
+Counter = 49323
+error message
+info message
+warning message
+fatal message
+Counter = 49324
+error message
+info message
+warning message
+fatal message
+Counter = 49325
+error message
+info message
+warning message
+fatal message
+Counter = 49326
+error message
+info message
+warning message
+fatal message
+Counter = 49327
+error message
+info message
+warning message
+fatal message
+Counter = 49328
+error message
+info message
+warning message
+fatal message
+Counter = 49329
+error message
+info message
+warning message
+fatal message
+Counter = 49330
+error message
+info message
+warning message
+fatal message
+Counter = 49331
+error message
+info message
+warning message
+fatal message
+Counter = 49332
+error message
+info message
+warning message
+fatal message
+Counter = 49333
+error message
+info message
+warning message
+fatal message
+Counter = 49334
+error message
+info message
+warning message
+fatal message
+Counter = 49335
+error message
+info message
+warning message
+fatal message
+Counter = 49336
+error message
+info message
+warning message
+fatal message
+Counter = 49337
+error message
+info message
+warning message
+fatal message
+Counter = 49338
+error message
+info message
+warning message
+fatal message
+Counter = 49339
+error message
+info message
+warning message
+fatal message
+Counter = 49340
+error message
+info message
+warning message
+fatal message
+Counter = 49341
+error message
+info message
+warning message
+fatal message
+Counter = 49342
+error message
+info message
+warning message
+fatal message
+Counter = 49343
+error message
+info message
+warning message
+fatal message
+Counter = 49344
+error message
+info message
+warning message
+fatal message
+Counter = 49345
+error message
+info message
+warning message
+fatal message
+Counter = 49346
+error message
+info message
+warning message
+fatal message
+Counter = 49347
+error message
+info message
+warning message
+fatal message
+Counter = 49348
+error message
+info message
+warning message
+fatal message
+Counter = 49349
+error message
+info message
+warning message
+fatal message
+Counter = 49350
+error message
+info message
+warning message
+fatal message
+Counter = 49351
+error message
+info message
+warning message
+fatal message
+Counter = 49352
+error message
+info message
+warning message
+fatal message
+Counter = 49353
+error message
+info message
+warning message
+fatal message
+Counter = 49354
+error message
+info message
+warning message
+fatal message
+Counter = 49355
+error message
+info message
+warning message
+fatal message
+Counter = 49356
+error message
+info message
+warning message
+fatal message
+Counter = 49357
+error message
+info message
+warning message
+fatal message
+Counter = 49358
+error message
+info message
+warning message
+fatal message
+Counter = 49359
+error message
+info message
+warning message
+fatal message
+Counter = 49360
+error message
+info message
+warning message
+fatal message
+Counter = 49361
+error message
+info message
+warning message
+fatal message
+Counter = 49362
+error message
+info message
+warning message
+fatal message
+Counter = 49363
+error message
+info message
+warning message
+fatal message
+Counter = 49364
+error message
+info message
+warning message
+fatal message
+Counter = 49365
+error message
+info message
+warning message
+fatal message
+Counter = 49366
+error message
+info message
+warning message
+fatal message
+Counter = 49367
+error message
+info message
+warning message
+fatal message
+Counter = 49368
+error message
+info message
+warning message
+fatal message
+Counter = 49369
+error message
+info message
+warning message
+fatal message
+Counter = 49370
+error message
+info message
+warning message
+fatal message
+Counter = 49371
+error message
+info message
+warning message
+fatal message
+Counter = 49372
+error message
+info message
+warning message
+fatal message
+Counter = 49373
+error message
+info message
+warning message
+fatal message
+Counter = 49374
+error message
+info message
+warning message
+fatal message
+Counter = 49375
+error message
+info message
+warning message
+fatal message
+Counter = 49376
+error message
+info message
+warning message
+fatal message
+Counter = 49377
+error message
+info message
+warning message
+fatal message
+Counter = 49378
+error message
+info message
+warning message
+fatal message
+Counter = 49379
+error message
+info message
+warning message
+fatal message
+Counter = 49380
+error message
+info message
+warning message
+fatal message
+Counter = 49381
+error message
+info message
+warning message
+fatal message
+Counter = 49382
+error message
+info message
+warning message
+fatal message
+Counter = 49383
+error message
+info message
+warning message
+fatal message
+Counter = 49384
+error message
+info message
+warning message
+fatal message
+Counter = 49385
+error message
+info message
+warning message
+fatal message
+Counter = 49386
+error message
+info message
+warning message
+fatal message
+Counter = 49387
+error message
+info message
+warning message
+fatal message
+Counter = 49388
+error message
+info message
+warning message
+fatal message
+Counter = 49389
+error message
+info message
+warning message
+fatal message
+Counter = 49390
+error message
+info message
+warning message
+fatal message
+Counter = 49391
+error message
+info message
+warning message
+fatal message
+Counter = 49392
+error message
+info message
+warning message
+fatal message
+Counter = 49393
+error message
+info message
+warning message
+fatal message
+Counter = 49394
+error message
+info message
+warning message
+fatal message
+Counter = 49395
+error message
+info message
+warning message
+fatal message
+Counter = 49396
+error message
+info message
+warning message
+fatal message
+Counter = 49397
+error message
+info message
+warning message
+fatal message
+Counter = 49398
+error message
+info message
+warning message
+fatal message
+Counter = 49399
+error message
+info message
+warning message
+fatal message
+Counter = 49400
+error message
+info message
+warning message
+fatal message
+Counter = 49401
+error message
+info message
+warning message
+fatal message
+Counter = 49402
+error message
+info message
+warning message
+fatal message
+Counter = 49403
+error message
+info message
+warning message
+fatal message
+Counter = 49404
+error message
+info message
+warning message
+fatal message
+Counter = 49405
+error message
+info message
+warning message
+fatal message
+Counter = 49406
+error message
+info message
+warning message
+fatal message
+Counter = 49407
+error message
+info message
+warning message
+fatal message
+Counter = 49408
+error message
+info message
+warning message
+fatal message
+Counter = 49409
+error message
+info message
+warning message
+fatal message
+Counter = 49410
+error message
+info message
+warning message
+fatal message
+Counter = 49411
+error message
+info message
+warning message
+fatal message
+Counter = 49412
+error message
+info message
+warning message
+fatal message
+Counter = 49413
+error message
+info message
+warning message
+fatal message
+Counter = 49414
+error message
+info message
+warning message
+fatal message
+Counter = 49415
+error message
+info message
+warning message
+fatal message
+Counter = 49416
+error message
+info message
+warning message
+fatal message
+Counter = 49417
+error message
+info message
+warning message
+fatal message
+Counter = 49418
+error message
+info message
+warning message
+fatal message
+Counter = 49419
+error message
+info message
+warning message
+fatal message
+Counter = 49420
+error message
+info message
+warning message
+fatal message
+Counter = 49421
+error message
+info message
+warning message
+fatal message
+Counter = 49422
+error message
+info message
+warning message
+fatal message
+Counter = 49423
+error message
+info message
+warning message
+fatal message
+Counter = 49424
+error message
+info message
+warning message
+fatal message
+Counter = 49425
+error message
+info message
+warning message
+fatal message
+Counter = 49426
+error message
+info message
+warning message
+fatal message
+Counter = 49427
+error message
+info message
+warning message
+fatal message
+Counter = 49428
+error message
+info message
+warning message
+fatal message
+Counter = 49429
+error message
+info message
+warning message
+fatal message
+Counter = 49430
+error message
+info message
+warning message
+fatal message
+Counter = 49431
+error message
+info message
+warning message
+fatal message
+Counter = 49432
+error message
+info message
+warning message
+fatal message
+Counter = 49433
+error message
+info message
+warning message
+fatal message
+Counter = 49434
+error message
+info message
+warning message
+fatal message
+Counter = 49435
+error message
+info message
+warning message
+fatal message
+Counter = 49436
+error message
+info message
+warning message
+fatal message
+Counter = 49437
+error message
+info message
+warning message
+fatal message
+Counter = 49438
+error message
+info message
+warning message
+fatal message
+Counter = 49439
+error message
+info message
+warning message
+fatal message
+Counter = 49440
+error message
+info message
+warning message
+fatal message
+Counter = 49441
+error message
+info message
+warning message
+fatal message
+Counter = 49442
+error message
+info message
+warning message
+fatal message
+Counter = 49443
+error message
+info message
+warning message
+fatal message
+Counter = 49444
+error message
+info message
+warning message
+fatal message
+Counter = 49445
+error message
+info message
+warning message
+fatal message
+Counter = 49446
+error message
+info message
+warning message
+fatal message
+Counter = 49447
+error message
+info message
+warning message
+fatal message
+Counter = 49448
+error message
+info message
+warning message
+fatal message
+Counter = 49449
+error message
+info message
+warning message
+fatal message
+Counter = 49450
+error message
+info message
+warning message
+fatal message
+Counter = 49451
+error message
+info message
+warning message
+fatal message
+Counter = 49452
+error message
+info message
+warning message
+fatal message
+Counter = 49453
+error message
+info message
+warning message
+fatal message
+Counter = 49454
+error message
+info message
+warning message
+fatal message
+Counter = 49455
+error message
+info message
+warning message
+fatal message
+Counter = 49456
+error message
+info message
+warning message
+fatal message
+Counter = 49457
+error message
+info message
+warning message
+fatal message
+Counter = 49458
+error message
+info message
+warning message
+fatal message
+Counter = 49459
+error message
+info message
+warning message
+fatal message
+Counter = 49460
+error message
+info message
+warning message
+fatal message
+Counter = 49461
+error message
+info message
+warning message
+fatal message
+Counter = 49462
+error message
+info message
+warning message
+fatal message
+Counter = 49463
+error message
+info message
+warning message
+fatal message
+Counter = 49464
+error message
+info message
+warning message
+fatal message
+Counter = 49465
+error message
+info message
+warning message
+fatal message
+Counter = 49466
+error message
+info message
+warning message
+fatal message
+Counter = 49467
+error message
+info message
+warning message
+fatal message
+Counter = 49468
+error message
+info message
+warning message
+fatal message
+Counter = 49469
+error message
+info message
+warning message
+fatal message
+Counter = 49470
+error message
+info message
+warning message
+fatal message
+Counter = 49471
+error message
+info message
+warning message
+fatal message
+Counter = 49472
+error message
+info message
+warning message
+fatal message
+Counter = 49473
+error message
+info message
+warning message
+fatal message
+Counter = 49474
+error message
+info message
+warning message
+fatal message
+Counter = 49475
+error message
+info message
+warning message
+fatal message
+Counter = 49476
+error message
+info message
+warning message
+fatal message
+Counter = 49477
+error message
+info message
+warning message
+fatal message
+Counter = 49478
+error message
+info message
+warning message
+fatal message
+Counter = 49479
+error message
+info message
+warning message
+fatal message
+Counter = 49480
+error message
+info message
+warning message
+fatal message
+Counter = 49481
+error message
+info message
+warning message
+fatal message
+Counter = 49482
+error message
+info message
+warning message
+fatal message
+Counter = 49483
+error message
+info message
+warning message
+fatal message
+Counter = 49484
+error message
+info message
+warning message
+fatal message
+Counter = 49485
+error message
+info message
+warning message
+fatal message
+Counter = 49486
+error message
+info message
+warning message
+fatal message
+Counter = 49487
+error message
+info message
+warning message
+fatal message
+Counter = 49488
+error message
+info message
+warning message
+fatal message
+Counter = 49489
+error message
+info message
+warning message
+fatal message
+Counter = 49490
+error message
+info message
+warning message
+fatal message
+Counter = 49491
+error message
+info message
+warning message
+fatal message
+Counter = 49492
+error message
+info message
+warning message
+fatal message
+Counter = 49493
+error message
+info message
+warning message
+fatal message
+Counter = 49494
+error message
+info message
+warning message
+fatal message
+Counter = 49495
+error message
+info message
+warning message
+fatal message
+Counter = 49496
+error message
+info message
+warning message
+fatal message
+Counter = 49497
+error message
+info message
+warning message
+fatal message
+Counter = 49498
+error message
+info message
+warning message
+fatal message
+Counter = 49499
+error message
+info message
+warning message
+fatal message
+Counter = 49500
+error message
+info message
+warning message
+fatal message
+Counter = 49501
+error message
+info message
+warning message
+fatal message
+Counter = 49502
+error message
+info message
+warning message
+fatal message
+Counter = 49503
+error message
+info message
+warning message
+fatal message
+Counter = 49504
+error message
+info message
+warning message
+fatal message
+Counter = 49505
+error message
+info message
+warning message
+fatal message
+Counter = 49506
+error message
+info message
+warning message
+fatal message
+Counter = 49507
+error message
+info message
+warning message
+fatal message
+Counter = 49508
+error message
+info message
+warning message
+fatal message
+Counter = 49509
+error message
+info message
+warning message
+fatal message
+Counter = 49510
+error message
+info message
+warning message
+fatal message
+Counter = 49511
+error message
+info message
+warning message
+fatal message
+Counter = 49512
+error message
+info message
+warning message
+fatal message
+Counter = 49513
+error message
+info message
+warning message
+fatal message
+Counter = 49514
+error message
+info message
+warning message
+fatal message
+Counter = 49515
+error message
+info message
+warning message
+fatal message
+Counter = 49516
+error message
+info message
+warning message
+fatal message
+Counter = 49517
+error message
+info message
+warning message
+fatal message
+Counter = 49518
+error message
+info message
+warning message
+fatal message
+Counter = 49519
+error message
+info message
+warning message
+fatal message
+Counter = 49520
+error message
+info message
+warning message
+fatal message
+Counter = 49521
+error message
+info message
+warning message
+fatal message
+Counter = 49522
+error message
+info message
+warning message
+fatal message
+Counter = 49523
+error message
+info message
+warning message
+fatal message
+Counter = 49524
+error message
+info message
+warning message
+fatal message
+Counter = 49525
+error message
+info message
+warning message
+fatal message
+Counter = 49526
+error message
+info message
+warning message
+fatal message
+Counter = 49527
+error message
+info message
+warning message
+fatal message
+Counter = 49528
+error message
+info message
+warning message
+fatal message
+Counter = 49529
+error message
+info message
+warning message
+fatal message
+Counter = 49530
+error message
+info message
+warning message
+fatal message
+Counter = 49531
+error message
+info message
+warning message
+fatal message
+Counter = 49532
+error message
+info message
+warning message
+fatal message
+Counter = 49533
+error message
+info message
+warning message
+fatal message
+Counter = 49534
+error message
+info message
+warning message
+fatal message
+Counter = 49535
+error message
+info message
+warning message
+fatal message
+Counter = 49536
+error message
+info message
+warning message
+fatal message
+Counter = 49537
+error message
+info message
+warning message
+fatal message
+Counter = 49538
+error message
+info message
+warning message
+fatal message
+Counter = 49539
+error message
+info message
+warning message
+fatal message
+Counter = 49540
+error message
+info message
+warning message
+fatal message
+Counter = 49541
+error message
+info message
+warning message
+fatal message
+Counter = 49542
+error message
+info message
+warning message
+fatal message
+Counter = 49543
+error message
+info message
+warning message
+fatal message
+Counter = 49544
+error message
+info message
+warning message
+fatal message
+Counter = 49545
+error message
+info message
+warning message
+fatal message
+Counter = 49546
+error message
+info message
+warning message
+fatal message
+Counter = 49547
+error message
+info message
+warning message
+fatal message
+Counter = 49548
+error message
+info message
+warning message
+fatal message
+Counter = 49549
+error message
+info message
+warning message
+fatal message
+Counter = 49550
+error message
+info message
+warning message
+fatal message
+Counter = 49551
+error message
+info message
+warning message
+fatal message
+Counter = 49552
+error message
+info message
+warning message
+fatal message
+Counter = 49553
+error message
+info message
+warning message
+fatal message
+Counter = 49554
+error message
+info message
+warning message
+fatal message
+Counter = 49555
+error message
+info message
+warning message
+fatal message
+Counter = 49556
+error message
+info message
+warning message
+fatal message
+Counter = 49557
+error message
+info message
+warning message
+fatal message
+Counter = 49558
+error message
+info message
+warning message
+fatal message
+Counter = 49559
+error message
+info message
+warning message
+fatal message
+Counter = 49560
+error message
+info message
+warning message
+fatal message
+Counter = 49561
+error message
+info message
+warning message
+fatal message
+Counter = 49562
+error message
+info message
+warning message
+fatal message
+Counter = 49563
+error message
+info message
+warning message
+fatal message
+Counter = 49564
+error message
+info message
+warning message
+fatal message
+Counter = 49565
+error message
+info message
+warning message
+fatal message
+Counter = 49566
+error message
+info message
+warning message
+fatal message
+Counter = 49567
+error message
+info message
+warning message
+fatal message
+Counter = 49568
+error message
+info message
+warning message
+fatal message
+Counter = 49569
+error message
+info message
+warning message
+fatal message
+Counter = 49570
+error message
+info message
+warning message
+fatal message
+Counter = 49571
+error message
+info message
+warning message
+fatal message
+Counter = 49572
+error message
+info message
+warning message
+fatal message
+Counter = 49573
+error message
+info message
+warning message
+fatal message
+Counter = 49574
+error message
+info message
+warning message
+fatal message
+Counter = 49575
+error message
+info message
+warning message
+fatal message
+Counter = 49576
+error message
+info message
+warning message
+fatal message
+Counter = 49577
+error message
+info message
+warning message
+fatal message
+Counter = 49578
+error message
+info message
+warning message
+fatal message
+Counter = 49579
+error message
+info message
+warning message
+fatal message
+Counter = 49580
+error message
+info message
+warning message
+fatal message
+Counter = 49581
+error message
+info message
+warning message
+fatal message
+Counter = 49582
+error message
+info message
+warning message
+fatal message
+Counter = 49583
+error message
+info message
+warning message
+fatal message
+Counter = 49584
+error message
+info message
+warning message
+fatal message
+Counter = 49585
+error message
+info message
+warning message
+fatal message
+Counter = 49586
+error message
+info message
+warning message
+fatal message
+Counter = 49587
+error message
+info message
+warning message
+fatal message
+Counter = 49588
+error message
+info message
+warning message
+fatal message
+Counter = 49589
+error message
+info message
+warning message
+fatal message
+Counter = 49590
+error message
+info message
+warning message
+fatal message
+Counter = 49591
+error message
+info message
+warning message
+fatal message
+Counter = 49592
+error message
+info message
+warning message
+fatal message
+Counter = 49593
+error message
+info message
+warning message
+fatal message
+Counter = 49594
+error message
+info message
+warning message
+fatal message
+Counter = 49595
+error message
+info message
+warning message
+fatal message
+Counter = 49596
+error message
+info message
+warning message
+fatal message
+Counter = 49597
+error message
+info message
+warning message
+fatal message
+Counter = 49598
+error message
+info message
+warning message
+fatal message
+Counter = 49599
+error message
+info message
+warning message
+fatal message
+Counter = 49600
+error message
+info message
+warning message
+fatal message
+Counter = 49601
+error message
+info message
+warning message
+fatal message
+Counter = 49602
+error message
+info message
+warning message
+fatal message
+Counter = 49603
+error message
+info message
+warning message
+fatal message
+Counter = 49604
+error message
+info message
+warning message
+fatal message
+Counter = 49605
+error message
+info message
+warning message
+fatal message
+Counter = 49606
+error message
+info message
+warning message
+fatal message
+Counter = 49607
+error message
+info message
+warning message
+fatal message
+Counter = 49608
+error message
+info message
+warning message
+fatal message
+Counter = 49609
+error message
+info message
+warning message
+fatal message
+Counter = 49610
+error message
+info message
+warning message
+fatal message
+Counter = 49611
+error message
+info message
+warning message
+fatal message
+Counter = 49612
+error message
+info message
+warning message
+fatal message
+Counter = 49613
+error message
+info message
+warning message
+fatal message
+Counter = 49614
+error message
+info message
+warning message
+fatal message
+Counter = 49615
+error message
+info message
+warning message
+fatal message
+Counter = 49616
+error message
+info message
+warning message
+fatal message
+Counter = 49617
+error message
+info message
+warning message
+fatal message
+Counter = 49618
+error message
+info message
+warning message
+fatal message
+Counter = 49619
+error message
+info message
+warning message
+fatal message
+Counter = 49620
+error message
+info message
+warning message
+fatal message
+Counter = 49621
+error message
+info message
+warning message
+fatal message
+Counter = 49622
+error message
+info message
+warning message
+fatal message
+Counter = 49623
+error message
+info message
+warning message
+fatal message
+Counter = 49624
+error message
+info message
+warning message
+fatal message
+Counter = 49625
+error message
+info message
+warning message
+fatal message
+Counter = 49626
+error message
+info message
+warning message
+fatal message
+Counter = 49627
+error message
+info message
+warning message
+fatal message
+Counter = 49628
+error message
+info message
+warning message
+fatal message
+Counter = 49629
+error message
+info message
+warning message
+fatal message
+Counter = 49630
+error message
+info message
+warning message
+fatal message
+Counter = 49631
+error message
+info message
+warning message
+fatal message
+Counter = 49632
+error message
+info message
+warning message
+fatal message
+Counter = 49633
+error message
+info message
+warning message
+fatal message
+Counter = 49634
+error message
+info message
+warning message
+fatal message
+Counter = 49635
+error message
+info message
+warning message
+fatal message
+Counter = 49636
+error message
+info message
+warning message
+fatal message
+Counter = 49637
+error message
+info message
+warning message
+fatal message
+Counter = 49638
+error message
+info message
+warning message
+fatal message
+Counter = 49639
+error message
+info message
+warning message
+fatal message
+Counter = 49640
+error message
+info message
+warning message
+fatal message
+Counter = 49641
+error message
+info message
+warning message
+fatal message
+Counter = 49642
+error message
+info message
+warning message
+fatal message
+Counter = 49643
+error message
+info message
+warning message
+fatal message
+Counter = 49644
+error message
+info message
+warning message
+fatal message
+Counter = 49645
+error message
+info message
+warning message
+fatal message
+Counter = 49646
+error message
+info message
+warning message
+fatal message
+Counter = 49647
+error message
+info message
+warning message
+fatal message
+Counter = 49648
+error message
+info message
+warning message
+fatal message
+Counter = 49649
+error message
+info message
+warning message
+fatal message
+Counter = 49650
+error message
+info message
+warning message
+fatal message
+Counter = 49651
+error message
+info message
+warning message
+fatal message
+Counter = 49652
+error message
+info message
+warning message
+fatal message
+Counter = 49653
+error message
+info message
+warning message
+fatal message
+Counter = 49654
+error message
+info message
+warning message
+fatal message
+Counter = 49655
+error message
+info message
+warning message
+fatal message
+Counter = 49656
+error message
+info message
+warning message
+fatal message
+Counter = 49657
+error message
+info message
+warning message
+fatal message
+Counter = 49658
+error message
+info message
+warning message
+fatal message
+Counter = 49659
+error message
+info message
+warning message
+fatal message
+Counter = 49660
+error message
+info message
+warning message
+fatal message
+Counter = 49661
+error message
+info message
+warning message
+fatal message
+Counter = 49662
+error message
+info message
+warning message
+fatal message
+Counter = 49663
+error message
+info message
+warning message
+fatal message
+Counter = 49664
+error message
+info message
+warning message
+fatal message
+Counter = 49665
+error message
+info message
+warning message
+fatal message
+Counter = 49666
+error message
+info message
+warning message
+fatal message
+Counter = 49667
+error message
+info message
+warning message
+fatal message
+Counter = 49668
+error message
+info message
+warning message
+fatal message
+Counter = 49669
+error message
+info message
+warning message
+fatal message
+Counter = 49670
+error message
+info message
+warning message
+fatal message
+Counter = 49671
+error message
+info message
+warning message
+fatal message
+Counter = 49672
+error message
+info message
+warning message
+fatal message
+Counter = 49673
+error message
+info message
+warning message
+fatal message
+Counter = 49674
+error message
+info message
+warning message
+fatal message
+Counter = 49675
+error message
+info message
+warning message
+fatal message
+Counter = 49676
+error message
+info message
+warning message
+fatal message
+Counter = 49677
+error message
+info message
+warning message
+fatal message
+Counter = 49678
+error message
+info message
+warning message
+fatal message
+Counter = 49679
+error message
+info message
+warning message
+fatal message
+Counter = 49680
+error message
+info message
+warning message
+fatal message
+Counter = 49681
+error message
+info message
+warning message
+fatal message
+Counter = 49682
+error message
+info message
+warning message
+fatal message
+Counter = 49683
+error message
+info message
+warning message
+fatal message
+Counter = 49684
+error message
+info message
+warning message
+fatal message
+Counter = 49685
+error message
+info message
+warning message
+fatal message
+Counter = 49686
+error message
+info message
+warning message
+fatal message
+Counter = 49687
+error message
+info message
+warning message
+fatal message
+Counter = 49688
+error message
+info message
+warning message
+fatal message
+Counter = 49689
+error message
+info message
+warning message
+fatal message
+Counter = 49690
+error message
+info message
+warning message
+fatal message
+Counter = 49691
+error message
+info message
+warning message
+fatal message
+Counter = 49692
+error message
+info message
+warning message
+fatal message
+Counter = 49693
+error message
+info message
+warning message
+fatal message
+Counter = 49694
+error message
+info message
+warning message
+fatal message
+Counter = 49695
+error message
+info message
+warning message
+fatal message
+Counter = 49696
+error message
+info message
+warning message
+fatal message
+Counter = 49697
+error message
+info message
+warning message
+fatal message
+Counter = 49698
+error message
+info message
+warning message
+fatal message
+Counter = 49699
+error message
+info message
+warning message
+fatal message
+Counter = 49700
+error message
+info message
+warning message
+fatal message
+Counter = 49701
+error message
+info message
+warning message
+fatal message
+Counter = 49702
+error message
+info message
+warning message
+fatal message
+Counter = 49703
+error message
+info message
+warning message
+fatal message
+Counter = 49704
+error message
+info message
+warning message
+fatal message
+Counter = 49705
+error message
+info message
+warning message
+fatal message
+Counter = 49706
+error message
+info message
+warning message
+fatal message
+Counter = 49707
+error message
+info message
+warning message
+fatal message
+Counter = 49708
+error message
+info message
+warning message
+fatal message
+Counter = 49709
+error message
+info message
+warning message
+fatal message
+Counter = 49710
+error message
+info message
+warning message
+fatal message
+Counter = 49711
+error message
+info message
+warning message
+fatal message
+Counter = 49712
+error message
+info message
+warning message
+fatal message
+Counter = 49713
+error message
+info message
+warning message
+fatal message
+Counter = 49714
+error message
+info message
+warning message
+fatal message
+Counter = 49715
+error message
+info message
+warning message
+fatal message
+Counter = 49716
+error message
+info message
+warning message
+fatal message
+Counter = 49717
+error message
+info message
+warning message
+fatal message
+Counter = 49718
+error message
+info message
+warning message
+fatal message
+Counter = 49719
+error message
+info message
+warning message
+fatal message
+Counter = 49720
+error message
+info message
+warning message
+fatal message
+Counter = 49721
+error message
+info message
+warning message
+fatal message
+Counter = 49722
+error message
+info message
+warning message
+fatal message
+Counter = 49723
+error message
+info message
+warning message
+fatal message
+Counter = 49724
+error message
+info message
+warning message
+fatal message
+Counter = 49725
+error message
+info message
+warning message
+fatal message
+Counter = 49726
+error message
+info message
+warning message
+fatal message
+Counter = 49727
+error message
+info message
+warning message
+fatal message
+Counter = 49728
+error message
+info message
+warning message
+fatal message
+Counter = 49729
+error message
+info message
+warning message
+fatal message
+Counter = 49730
+error message
+info message
+warning message
+fatal message
+Counter = 49731
+error message
+info message
+warning message
+fatal message
+Counter = 49732
+error message
+info message
+warning message
+fatal message
+Counter = 49733
+error message
+info message
+warning message
+fatal message
+Counter = 49734
+error message
+info message
+warning message
+fatal message
+Counter = 49735
+error message
+info message
+warning message
+fatal message
+Counter = 49736
+error message
+info message
+warning message
+fatal message
+Counter = 49737
+error message
+info message
+warning message
+fatal message
+Counter = 49738
+error message
+info message
+warning message
+fatal message
+Counter = 49739
+error message
+info message
+warning message
+fatal message
+Counter = 49740
+error message
+info message
+warning message
+fatal message
+Counter = 49741
+error message
+info message
+warning message
+fatal message
+Counter = 49742
+error message
+info message
+warning message
+fatal message
+Counter = 49743
+error message
+info message
+warning message
+fatal message
+Counter = 49744
+error message
+info message
+warning message
+fatal message
+Counter = 49745
+error message
+info message
+warning message
+fatal message
+Counter = 49746
+error message
+info message
+warning message
+fatal message
+Counter = 49747
+error message
+info message
+warning message
+fatal message
+Counter = 49748
+error message
+info message
+warning message
+fatal message
+Counter = 49749
+error message
+info message
+warning message
+fatal message
+Counter = 49750
+error message
+info message
+warning message
+fatal message
+Counter = 49751
+error message
+info message
+warning message
+fatal message
+Counter = 49752
+error message
+info message
+warning message
+fatal message
+Counter = 49753
+error message
+info message
+warning message
+fatal message
+Counter = 49754
+error message
+info message
+warning message
+fatal message
+Counter = 49755
+error message
+info message
+warning message
+fatal message
+Counter = 49756
+error message
+info message
+warning message
+fatal message
+Counter = 49757
+error message
+info message
+warning message
+fatal message
+Counter = 49758
+error message
+info message
+warning message
+fatal message
+Counter = 49759
+error message
+info message
+warning message
+fatal message
+Counter = 49760
+error message
+info message
+warning message
+fatal message
+Counter = 49761
+error message
+info message
+warning message
+fatal message
+Counter = 49762
+error message
+info message
+warning message
+fatal message
+Counter = 49763
+error message
+info message
+warning message
+fatal message
+Counter = 49764
+error message
+info message
+warning message
+fatal message
+Counter = 49765
+error message
+info message
+warning message
+fatal message
+Counter = 49766
+error message
+info message
+warning message
+fatal message
+Counter = 49767
+error message
+info message
+warning message
+fatal message
+Counter = 49768
+error message
+info message
+warning message
+fatal message
+Counter = 49769
+error message
+info message
+warning message
+fatal message
+Counter = 49770
+error message
+info message
+warning message
+fatal message
+Counter = 49771
+error message
+info message
+warning message
+fatal message
+Counter = 49772
+error message
+info message
+warning message
+fatal message
+Counter = 49773
+error message
+info message
+warning message
+fatal message
+Counter = 49774
+error message
+info message
+warning message
+fatal message
+Counter = 49775
+error message
+info message
+warning message
+fatal message
+Counter = 49776
+error message
+info message
+warning message
+fatal message
+Counter = 49777
+error message
+info message
+warning message
+fatal message
+Counter = 49778
+error message
+info message
+warning message
+fatal message
+Counter = 49779
+error message
+info message
+warning message
+fatal message
+Counter = 49780
+error message
+info message
+warning message
+fatal message
+Counter = 49781
+error message
+info message
+warning message
+fatal message
+Counter = 49782
+error message
+info message
+warning message
+fatal message
+Counter = 49783
+error message
+info message
+warning message
+fatal message
+Counter = 49784
+error message
+info message
+warning message
+fatal message
+Counter = 49785
+error message
+info message
+warning message
+fatal message
+Counter = 49786
+error message
+info message
+warning message
+fatal message
+Counter = 49787
+error message
+info message
+warning message
+fatal message
+Counter = 49788
+error message
+info message
+warning message
+fatal message
+Counter = 49789
+error message
+info message
+warning message
+fatal message
+Counter = 49790
+error message
+info message
+warning message
+fatal message
+Counter = 49791
+error message
+info message
+warning message
+fatal message
+Counter = 49792
+error message
+info message
+warning message
+fatal message
+Counter = 49793
+error message
+info message
+warning message
+fatal message
+Counter = 49794
+error message
+info message
+warning message
+fatal message
+Counter = 49795
+error message
+info message
+warning message
+fatal message
+Counter = 49796
+error message
+info message
+warning message
+fatal message
+Counter = 49797
+error message
+info message
+warning message
+fatal message
+Counter = 49798
+error message
+info message
+warning message
+fatal message
+Counter = 49799
+error message
+info message
+warning message
+fatal message
+Counter = 49800
+error message
+info message
+warning message
+fatal message
+Counter = 49801
+error message
+info message
+warning message
+fatal message
+Counter = 49802
+error message
+info message
+warning message
+fatal message
+Counter = 49803
+error message
+info message
+warning message
+fatal message
+Counter = 49804
+error message
+info message
+warning message
+fatal message
+Counter = 49805
+error message
+info message
+warning message
+fatal message
+Counter = 49806
+error message
+info message
+warning message
+fatal message
+Counter = 49807
+error message
+info message
+warning message
+fatal message
+Counter = 49808
+error message
+info message
+warning message
+fatal message
+Counter = 49809
+error message
+info message
+warning message
+fatal message
+Counter = 49810
+error message
+info message
+warning message
+fatal message
+Counter = 49811
+error message
+info message
+warning message
+fatal message
+Counter = 49812
+error message
+info message
+warning message
+fatal message
+Counter = 49813
+error message
+info message
+warning message
+fatal message
+Counter = 49814
+error message
+info message
+warning message
+fatal message
+Counter = 49815
+error message
+info message
+warning message
+fatal message
+Counter = 49816
+error message
+info message
+warning message
+fatal message
+Counter = 49817
+error message
+info message
+warning message
+fatal message
+Counter = 49818
+error message
+info message
+warning message
+fatal message
+Counter = 49819
+error message
+info message
+warning message
+fatal message
+Counter = 49820
+error message
+info message
+warning message
+fatal message
+Counter = 49821
+error message
+info message
+warning message
+fatal message
+Counter = 49822
+error message
+info message
+warning message
+fatal message
+Counter = 49823
+error message
+info message
+warning message
+fatal message
+Counter = 49824
+error message
+info message
+warning message
+fatal message
+Counter = 49825
+error message
+info message
+warning message
+fatal message
+Counter = 49826
+error message
+info message
+warning message
+fatal message
+Counter = 49827
+error message
+info message
+warning message
+fatal message
+Counter = 49828
+error message
+info message
+warning message
+fatal message
+Counter = 49829
+error message
+info message
+warning message
+fatal message
+Counter = 49830
+error message
+info message
+warning message
+fatal message
+Counter = 49831
+error message
+info message
+warning message
+fatal message
+Counter = 49832
+error message
+info message
+warning message
+fatal message
+Counter = 49833
+error message
+info message
+warning message
+fatal message
+Counter = 49834
+error message
+info message
+warning message
+fatal message
+Counter = 49835
+error message
+info message
+warning message
+fatal message
+Counter = 49836
+error message
+info message
+warning message
+fatal message
+Counter = 49837
+error message
+info message
+warning message
+fatal message
+Counter = 49838
+error message
+info message
+warning message
+fatal message
+Counter = 49839
+error message
+info message
+warning message
+fatal message
+Counter = 49840
+error message
+info message
+warning message
+fatal message
+Counter = 49841
+error message
+info message
+warning message
+fatal message
+Counter = 49842
+error message
+info message
+warning message
+fatal message
+Counter = 49843
+error message
+info message
+warning message
+fatal message
+Counter = 49844
+error message
+info message
+warning message
+fatal message
+Counter = 49845
+error message
+info message
+warning message
+fatal message
+Counter = 49846
+error message
+info message
+warning message
+fatal message
+Counter = 49847
+error message
+info message
+warning message
+fatal message
+Counter = 49848
+error message
+info message
+warning message
+fatal message
+Counter = 49849
+error message
+info message
+warning message
+fatal message
+Counter = 49850
+error message
+info message
+warning message
+fatal message
+Counter = 49851
+error message
+info message
+warning message
+fatal message
+Counter = 49852
+error message
+info message
+warning message
+fatal message
+Counter = 49853
+error message
+info message
+warning message
+fatal message
+Counter = 49854
+error message
+info message
+warning message
+fatal message
+Counter = 49855
+error message
+info message
+warning message
+fatal message
+Counter = 49856
+error message
+info message
+warning message
+fatal message
+Counter = 49857
+error message
+info message
+warning message
+fatal message
+Counter = 49858
+error message
+info message
+warning message
+fatal message
+Counter = 49859
+error message
+info message
+warning message
+fatal message
+Counter = 49860
+error message
+info message
+warning message
+fatal message
+Counter = 49861
+error message
+info message
+warning message
+fatal message
+Counter = 49862
+error message
+info message
+warning message
+fatal message
+Counter = 49863
+error message
+info message
+warning message
+fatal message
+Counter = 49864
+error message
+info message
+warning message
+fatal message
+Counter = 49865
+error message
+info message
+warning message
+fatal message
+Counter = 49866
+error message
+info message
+warning message
+fatal message
+Counter = 49867
+error message
+info message
+warning message
+fatal message
+Counter = 49868
+error message
+info message
+warning message
+fatal message
+Counter = 49869
+error message
+info message
+warning message
+fatal message
+Counter = 49870
+error message
+info message
+warning message
+fatal message
+Counter = 49871
+error message
+info message
+warning message
+fatal message
+Counter = 49872
+error message
+info message
+warning message
+fatal message
+Counter = 49873
+error message
+info message
+warning message
+fatal message
+Counter = 49874
+error message
+info message
+warning message
+fatal message
+Counter = 49875
+error message
+info message
+warning message
+fatal message
+Counter = 49876
+error message
+info message
+warning message
+fatal message
+Counter = 49877
+error message
+info message
+warning message
+fatal message
+Counter = 49878
+error message
+info message
+warning message
+fatal message
+Counter = 49879
+error message
+info message
+warning message
+fatal message
+Counter = 49880
+error message
+info message
+warning message
+fatal message
+Counter = 49881
+error message
+info message
+warning message
+fatal message
+Counter = 49882
+error message
+info message
+warning message
+fatal message
+Counter = 49883
+error message
+info message
+warning message
+fatal message
+Counter = 49884
+error message
+info message
+warning message
+fatal message
+Counter = 49885
+error message
+info message
+warning message
+fatal message
+Counter = 49886
+error message
+info message
+warning message
+fatal message
+Counter = 49887
+error message
+info message
+warning message
+fatal message
+Counter = 49888
+error message
+info message
+warning message
+fatal message
+Counter = 49889
+error message
+info message
+warning message
+fatal message
+Counter = 49890
+error message
+info message
+warning message
+fatal message
+Counter = 49891
+error message
+info message
+warning message
+fatal message
+Counter = 49892
+error message
+info message
+warning message
+fatal message
+Counter = 49893
+error message
+info message
+warning message
+fatal message
+Counter = 49894
+error message
+info message
+warning message
+fatal message
+Counter = 49895
+error message
+info message
+warning message
+fatal message
+Counter = 49896
+error message
+info message
+warning message
+fatal message
+Counter = 49897
+error message
+info message
+warning message
+fatal message
+Counter = 49898
+error message
+info message
+warning message
+fatal message
+Counter = 49899
+error message
+info message
+warning message
+fatal message
+Counter = 49900
+error message
+info message
+warning message
+fatal message
+Counter = 49901
+error message
+info message
+warning message
+fatal message
+Counter = 49902
+error message
+info message
+warning message
+fatal message
+Counter = 49903
+error message
+info message
+warning message
+fatal message
+Counter = 49904
+error message
+info message
+warning message
+fatal message
+Counter = 49905
+error message
+info message
+warning message
+fatal message
+Counter = 49906
+error message
+info message
+warning message
+fatal message
+Counter = 49907
+error message
+info message
+warning message
+fatal message
+Counter = 49908
+error message
+info message
+warning message
+fatal message
+Counter = 49909
+error message
+info message
+warning message
+fatal message
+Counter = 49910
+error message
+info message
+warning message
+fatal message
+Counter = 49911
+error message
+info message
+warning message
+fatal message
+Counter = 49912
+error message
+info message
+warning message
+fatal message
+Counter = 49913
+error message
+info message
+warning message
+fatal message
+Counter = 49914
+error message
+info message
+warning message
+fatal message
+Counter = 49915
+error message
+info message
+warning message
+fatal message
+Counter = 49916
+error message
+info message
+warning message
+fatal message
+Counter = 49917
+error message
+info message
+warning message
+fatal message
+Counter = 49918
+error message
+info message
+warning message
+fatal message
+Counter = 49919
+error message
+info message
+warning message
+fatal message
+Counter = 49920
+error message
+info message
+warning message
+fatal message
+Counter = 49921
+error message
+info message
+warning message
+fatal message
+Counter = 49922
+error message
+info message
+warning message
+fatal message
+Counter = 49923
+error message
+info message
+warning message
+fatal message
+Counter = 49924
+error message
+info message
+warning message
+fatal message
+Counter = 49925
+error message
+info message
+warning message
+fatal message
+Counter = 49926
+error message
+info message
+warning message
+fatal message
+Counter = 49927
+error message
+info message
+warning message
+fatal message
+Counter = 49928
+error message
+info message
+warning message
+fatal message
+Counter = 49929
+error message
+info message
+warning message
+fatal message
+Counter = 49930
+error message
+info message
+warning message
+fatal message
+Counter = 49931
+error message
+info message
+warning message
+fatal message
+Counter = 49932
+error message
+info message
+warning message
+fatal message
+Counter = 49933
+error message
+info message
+warning message
+fatal message
+Counter = 49934
+error message
+info message
+warning message
+fatal message
+Counter = 49935
+error message
+info message
+warning message
+fatal message
+Counter = 49936
+error message
+info message
+warning message
+fatal message
+Counter = 49937
+error message
+info message
+warning message
+fatal message
+Counter = 49938
+error message
+info message
+warning message
+fatal message
+Counter = 49939
+error message
+info message
+warning message
+fatal message
+Counter = 49940
+error message
+info message
+warning message
+fatal message
+Counter = 49941
+error message
+info message
+warning message
+fatal message
+Counter = 49942
+error message
+info message
+warning message
+fatal message
+Counter = 49943
+error message
+info message
+warning message
+fatal message
+Counter = 49944
+error message
+info message
+warning message
+fatal message
+Counter = 49945
+error message
+info message
+warning message
+fatal message
+Counter = 49946
+error message
+info message
+warning message
+fatal message
+Counter = 49947
+error message
+info message
+warning message
+fatal message
+Counter = 49948
+error message
+info message
+warning message
+fatal message
+Counter = 49949
+error message
+info message
+warning message
+fatal message
+Counter = 49950
+error message
+info message
+warning message
+fatal message
+Counter = 49951
+error message
+info message
+warning message
+fatal message
+Counter = 49952
+error message
+info message
+warning message
+fatal message
+Counter = 49953
+error message
+info message
+warning message
+fatal message
+Counter = 49954
+error message
+info message
+warning message
+fatal message
+Counter = 49955
+error message
+info message
+warning message
+fatal message
+Counter = 49956
+error message
+info message
+warning message
+fatal message
+Counter = 49957
+error message
+info message
+warning message
+fatal message
+Counter = 49958
+error message
+info message
+warning message
+fatal message
+Counter = 49959
+error message
+info message
+warning message
+fatal message
+Counter = 49960
+error message
+info message
+warning message
+fatal message
+Counter = 49961
+error message
+info message
+warning message
+fatal message
+Counter = 49962
+error message
+info message
+warning message
+fatal message
+Counter = 49963
+error message
+info message
+warning message
+fatal message
+Counter = 49964
+error message
+info message
+warning message
+fatal message
+Counter = 49965
+error message
+info message
+warning message
+fatal message
+Counter = 49966
+error message
+info message
+warning message
+fatal message
+Counter = 49967
+error message
+info message
+warning message
+fatal message
+Counter = 49968
+error message
+info message
+warning message
+fatal message
+Counter = 49969
+error message
+info message
+warning message
+fatal message
+Counter = 49970
+error message
+info message
+warning message
+fatal message
+Counter = 49971
+error message
+info message
+warning message
+fatal message
+Counter = 49972
+error message
+info message
+warning message
+fatal message
+Counter = 49973
+error message
+info message
+warning message
+fatal message
+Counter = 49974
+error message
+info message
+warning message
+fatal message
+Counter = 49975
+error message
+info message
+warning message
+fatal message
+Counter = 49976
+error message
+info message
+warning message
+fatal message
+Counter = 49977
+error message
+info message
+warning message
+fatal message
+Counter = 49978
+error message
+info message
+warning message
+fatal message
+Counter = 49979
+error message
+info message
+warning message
+fatal message
+Counter = 49980
+error message
+info message
+warning message
+fatal message
+Counter = 49981
+error message
+info message
+warning message
+fatal message
+Counter = 49982
+error message
+info message
+warning message
+fatal message
+Counter = 49983
+error message
+info message
+warning message
+fatal message
+Counter = 49984
+error message
+info message
+warning message
+fatal message
+Counter = 49985
+error message
+info message
+warning message
+fatal message
+Counter = 49986
+error message
+info message
+warning message
+fatal message
+Counter = 49987
+error message
+info message
+warning message
+fatal message
+Counter = 49988
+error message
+info message
+warning message
+fatal message
+Counter = 49989
+error message
+info message
+warning message
+fatal message
+Counter = 49990
+error message
+info message
+warning message
+fatal message
+Counter = 49991
+error message
+info message
+warning message
+fatal message
+Counter = 49992
+error message
+info message
+warning message
+fatal message
+Counter = 49993
+error message
+info message
+warning message
+fatal message
+Counter = 49994
+error message
+info message
+warning message
+fatal message
+Counter = 49995
+error message
+info message
+warning message
+fatal message
+Counter = 49996
+error message
+info message
+warning message
+fatal message
+Counter = 49997
+error message
+info message
+warning message
+fatal message
+Counter = 49998
+error message
+info message
+warning message
+fatal message
+Counter = 49999
+error message
+info message
+warning message
+fatal message
+---------------------------------------------------------------------------------------------------------------
+12.4:
+import java.lang.String;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.PropertyConfigurator;
+
+public class HelloWorld { 
+public static void main(String[] args)  
+{         
+	final Logger log = LogManager.getLogger(HelloWorld.class.getName());  
+PropertyConfigurator.configure("log4j.properties");
+log.debug("Hello World!");  
+log.warn("Sample warn message");    
+log.error("Sample error message");   
+} 
+}
+OUTPUT:
+2020-02-13 15:41:52,518 main ERROR PatternLayout contains an invalid element or attribute "patter"
+2020-02-13 15:41:52,559 main ERROR Unable to locate appender "ALL,STDOUT" for logger config "root"
+Hello World!
+Sample warn message
+Sample error message
+

@@ -1,0 +1,273 @@
+2.1
+package VJIT;
+
+public class PersonDetails {
+	String FirstName;
+	String LastName;
+	String Gender;
+	int Age;
+double Weight;
+
+PersonDetails(){
+	FirstName="Divya";
+	LastName="Bharati";
+	Gender="F";
+	Age=20;
+   Weight=85.5;
+}
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+PersonDetails pd=new PersonDetails();
+System.out.println("Person Details");
+System.out.println("First Name: "+pd.FirstName);
+System.out.println("last Name: "+pd.LastName);
+System.out.println("Gender: "+pd.Gender);
+System.out.println("Age: "+pd.Age);
+System.out.println("Weight: "+pd.Weight);
+	}
+}
+
+Output:
+Person Details
+First Name: Divya
+last Name: Bharati
+Gender: F
+Age: 20
+Weight: 85.5
+
+2.2
+package VJIT;
+
+public class NumberDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int a=Integer.parseInt(args[0]);
+		if(a>=0)
+			System.out.println("Positive Number");
+		else
+			System.out.println("Negative Number");
+		
+
+	}
+
+}
+Output:
+Positive Number
+
+2.3
+package VJIT;
+
+public class Person {
+	String firstName;
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public char getGender() {
+		return gender;
+	}
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+	String lastName;
+	char gender;
+	Person()
+	{
+	    firstName= "Shraddha";
+	    lastName= "Kulkarni";
+		gender = 'F';
+	}
+	Person(String firstName, String lastName, char gender)
+	{
+		this.firstName=firstName;
+		this.lastName=lastName;
+		this.gender=gender;
+	}
+
+
+}
+
+ii.
+package VJIT;
+public class PersonMain{
+	String firstName;
+	String lastName;
+	char gender;
+
+public static void main(String[] args){
+	Person p1=new Person();
+	System.out.println("Person Details");
+	System.out.println("-----------------------");
+	System.out.println("First Name:"+p1.getFirstName());
+	System.out.println("Last Name: "+p1.getLastName());
+	System.out.println("Gender: "+p1.getGender());
+	System.out.println("-----------------------");
+	
+	Person p2=new Person("Gayatri","Lakkavaram",'F');
+	System.out.println("First Name:"+p2.getFirstName());
+	System.out.println("Last Name: "+p2.getLastName());
+	System.out.println("Gender: "+p2.getGender());
+	
+}
+}
+Output:
+
+Person Details
+-----------------------
+First Name:Shraddha
+Last Name: Kulkarni
+Gender: F
+-----------------------
+First Name:Gayatri
+Last Name: Lakkavaram
+Gender: F
+
+2.4
+
+package VJIT;
+
+public class Person {
+	String firstName;
+	String lastName;
+	char gender;
+	double phoneNumber;
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public char getGender() {
+		return gender;
+	}
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+	public double getphoneNumber() {
+		return phoneNumber;
+	}
+	public void setphoneNumber(double phoneNumber) {
+		this.phoneNumber=phoneNumber;
+	}
+	Person()
+	{
+	    firstName= "Shraddha";
+	    lastName= "Kulkarni";
+		gender = 'F';
+		phoneNumber=9573179;
+	}
+	Person(String firstName, String lastName, char gender, double phoneNumber)
+	{
+		this.firstName=firstName;
+		this.lastName=lastName;
+		this.gender=gender;
+		this.phoneNumber=phoneNumber;
+	}
+
+
+}
+package VJIT;
+public class PersonMain{
+	String firstName;
+	String lastName;
+	char gender;
+	long phoneNumber;
+
+public static void main(String[] args){
+	Person p1=new Person();
+	System.out.println("Person Details");
+	System.out.println("-----------------------");
+	System.out.println("First Name:"+p1.getFirstName());
+	System.out.println("Last Name: "+p1.getLastName());
+	System.out.println("Gender: "+p1.getGender());
+	System.out.println("Ph No: "+p1.getphoneNumber());
+	System.out.println("-----------------------");
+	
+	Person p2=new Person("Gayatri","Lakkavaram",'F',93989);
+	System.out.println("First Name:"+p2.getFirstName());
+	System.out.println("Last Name: "+p2.getLastName());
+	System.out.println("Gender: "+p2.getGender());
+	System.out.println("ph no: "+p2.getphoneNumber());
+	
+}
+}
+Output:
+
+Person Details
+-----------------------
+First Name:Shraddha
+Last Name: Kulkarni
+Gender: F
+Ph No: 9573179.0
+-----------------------
+First Name:Gayatri
+Last Name: Lakkavaram
+Gender: F
+ph no: 93989.0
+
+2.5
+
+package VJIT;
+public class PersonMain
+{
+	public static void main(String[] args)
+	{
+		System.out.println("Person Details");
+		System.out.println("-----------------------");
+
+		Person p1=new Person();
+		
+		System.out.println("First Name:"+p1.getFirstName());
+		System.out.println("Last Name: "+p1.getLastName());
+		System.out.println("Gender: "+p1.getGender());
+		System.out.println("Ph No: "+p1.getphoneNumber());
+		
+		System.out.println("-----------------------");
+		
+		Person p2=new Person("Gayatri","Lakkavaram",'L',93989);
+		
+		System.out.println("First Name:"+p2.getFirstName());
+		System.out.println("Last Name: "+p2.getLastName());
+		
+		Character c = p2.getGender();
+		if(c.equals('M') || c.equals('F'))
+			System.out.println("Gender: "+c);
+		else
+			System.out.println("Invalid Gender."); 
+			
+		System.out.println("ph no: "+p2.getphoneNumber());
+	}
+}
+Output:
+Person Details
+-----------------------
+First Name:Shraddha
+Last Name: Kulkarni
+Gender: S
+Ph No: 9573179.0
+-----------------------
+First Name:Gayatri
+Last Name: Lakkavaram
+Invalid Gender.
+ph no: 93989.0
+
+
+

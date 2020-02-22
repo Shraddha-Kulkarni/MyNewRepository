@@ -1,0 +1,240 @@
+9.1
+package jdbcPack;
+
+public class Person {
+	private String firstName;
+	private String lastName;
+	
+	public Person(String fname, String lname)
+	{
+		if(fname==null&&lname==null)
+		{
+			throw new IllegalArgumentException("Both Names Cannot be NULL");
+		}
+		this.firstName=fname;
+		this.lastName=lname;
+	}
+	public String getFullname()
+	{
+		String first=(this.firstName!=null)?this.firstName:"?";
+		String last=(this.lastName!=null)?this.lastName:"?";
+		return first+" "+last;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+}
+
+Testing:
+
+
+package jdbcPack;
+import org.junit.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class TestPerson2 {
+
+	@Test
+	public void testGetFullName()
+	{
+		System.out.println("From TestPerson2");
+		Person per=new Person("Robert","King");
+		assertEquals("Robert King",per.getFullname());
+	}
+	@Test(expected= IllegalArgumentException.class)
+	public void testNullslnName()
+	{
+		System.out.println("from TestPerson2 testing exceptions");
+		Person per1=new Person(null,null);
+	}
+	
+
+}
+Output:
+From TestPerson2
+from TestPerson2 testing exceptions
+
+9.2
+package jdbcpack;
+
+public class Date       
+{  
+	int intDay, intMonth, intYear;  
+	// Constructor  
+	Date(int intDay, int intMonth, int intYear)   
+	{   
+		this.intDay = intDay; 
+		this.intMonth = intMonth; 
+		this.intYear = intYear;  
+		}  // setter and getter methods  
+	void setDay(int intDay)   
+	{   
+		this.intDay = intDay;  
+		}   
+	int getDay( )    
+	{   
+		return  this.intDay;  
+		}    
+	void setMonth(int intMonth)  
+	{   
+		this.intMonth = intMonth;  
+		} 
+	int getMonth( )  
+	{   
+		return  this.intMonth;  
+	} 
+
+	void setYear(int intYear)  
+	{   
+		this.intYear=intYear;  
+	} 
+	int getYear( )  
+	{   
+		return  this.intYear; 
+	}
+	public String toString() //converts date obj to string.      
+	{   
+		return "Date is "+intDay+"/"+intMonth+"/"+intYear;   
+	} 
+}
+
+Testing:
+
+package jdbcpack;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class DateTest {
+
+	@Test
+	public void testDate() {
+		//fail("Not yet implemented");
+		Date d=new Date(10,02,2002);
+		assertEquals(d,d);
+	}
+
+	@Test
+	public void testGetDay() {
+		//fail("Not yet implemented");
+		Date d=new Date(13,05,1999);
+		assertEquals(d.getDay(),13);
+	}
+
+		@Test
+	public void testGetMonth() {
+		//fail("Not yet implemented");
+			Date d=new Date(13,05,1999);
+			assertEquals(d.getMonth(),05);
+
+	}
+
+	@Test
+	public void testGetYear() {
+		//fail("Not yet implemented");
+		Date d=new Date(13,05,1999);
+		assertEquals(d.getYear(),1999);
+	}
+	}
+
+
+9.2.1
+
+package jdbcpack;
+
+public class  Person {  
+	private String firstName;  
+	private String lastName; 
+	public Person(String fname,String lname)  
+	{   
+		if(fname == null &&lname==null)
+		{    
+			throw new IllegalArgumentException("Both Names Cannot be NULL");   
+			} 
+		this.firstName=fname;   
+		this.lastName = lname; 
+	} 
+
+
+	public String getFullName() { 
+		String first=(this.firstName != null)? this.firstName:"?";  
+		String last=(this.lastName != null)? this.lastName:"?";  
+		return first + " " + last; 
+		} 
+	 
+	public String getFirstName(){  
+		return this.firstName; 
+		} 
+	public String getLastName(){  
+		return this.lastName; 
+		} 
+	public static void main(String args[]) {  
+		Person p=new Person("a","b");  
+		System.out.println(p.getFirstName()); 
+		} 
+	} 
+	
+
+Testing:
+package com.cg.lab9;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class PersonClassTest {
+
+	@Test
+	public void testGetL() {
+		//fail("Not yet implemented");
+		PersonClass pc=new PersonClass("Divya","Bharathi",gender.f, "9573179345");
+		assertEquals(pc.getL(),"7995659886");
+	}
+
+	@Test
+	public void testGetFirstName() {
+		//fail("Not yet implemented");
+		PersonClass pc=new PersonClass("Divya","Bharathi",gender.f, "9573179345");
+		assertEquals(pc.getFirstName(),"Divya");
+	}
+
+	@Test
+	public void testGetLastName() {
+		//fail("Not yet implemented");
+		PersonClass pc=new PersonClass("Divya","Bharathi",gender.f, "9573179345");
+		assertEquals(pc.getLastName(),"Bharathi");
+	}
+
+	@Test
+	public void testGetGender() {
+		//fail("Not yet implemented");
+		PersonClass pc=new PersonClass("Divya","Bharathi",gender.f, "9573179345");
+		assertEquals(pc.getGender(),gender.f);
+	}
+
+	@Test
+	public void testDisplay() {
+		//fail("Not yet implemented");
+		PersonClass pc=new PersonClass("Divya","Bharathi",gender.f, "9573179345");
+		//assertEquals(pc.display(),);
+	}
+	@Test
+	public void testGetFullName() {
+		System.out.println("from TestPerson2");   
+		Person per = new Person("Robert","King");   
+		assertEquals("Robert King",per.getFullName());  
+		}    
+	@Test (expected=IllegalArgumentException.class)  
+	public void testNullsInName()
+	{   
+		System.out.println("from TestPerson2 testing exceptions");   
+		Person per1 = new Person(null,null);     
+		}  
+
+
+}

@@ -1,0 +1,153 @@
+8.1
+package VJIT;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+public class ReadFile {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+		File rf=new File("D:\\capgemini\\File1.txt");
+		
+		Scanner myReader=new Scanner(rf);
+		while(myReader.hasNextLine()) {
+		String data=myReader.nextLine();
+		System.out.println(data);
+
+			StringBuffer buffer=new StringBuffer(data);
+			buffer=buffer.reverse();
+			String k=buffer.toString();
+			System.out.println(k);
+			
+		}
+		myReader.close();
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("File not found");
+		}
+
+}
+}
+
+Output:
+This is a java file
+elif avaj a si sihT
+
+
+8.2
+package VJIT;
+import java.io.*;
+import java.util.*;    
+public class Even {
+
+	public static void main(String[] args) throws IOException  {
+		// TODO Auto-generated method stub
+		FileReader fr=new FileReader("D:\\capgemini\\numbers.txt");
+		BufferedReader br=new BufferedReader(fr);
+		String data=null;
+		int a=0;
+		while((data=br.readLine())!=null)
+		{
+			Scanner sc=new Scanner(data);
+			sc.useDelimiter(",");
+			while(sc.hasNext())
+			{
+				a=Integer.parseInt(sc.next());
+				if(a%2==0)
+					System.out.println(a);
+			}
+			
+		}
+		fr.close();
+		br.close();
+	}
+}
+Output:
+0
+2
+4
+6
+8
+10
+
+8.3
+package com.cg.eis.pl;
+
+import com.cg.eis.bean.*;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+import com.cg.eis.exception.*;
+import java.util.Scanner;
+
+public class EmpUser {
+	
+	
+
+	static void checkSalary(double salary) 
+	{ 
+		if (salary <= 3000) 
+		{ 
+			try
+			{
+				throw new EmployeeException("Enter correct salary");
+			}
+			catch(EmployeeException ee)
+			{
+				System.out.println(ee.getMessage());
+			}
+		}
+	}
+	
+	public static void main(String[] args) throws Exception
+	{
+		Scanner obj = new Scanner(System.in);
+		
+	
+		EmpUser e=new EmpUser();
+		
+		System.out.println("Enter the details");
+		System.out.println("Enter the  name");
+		String name = obj.next();
+		System.out.println("Enter salary");
+		double salary = obj.nextDouble();
+		System.out.println("Enter designation");
+		String designation = obj.next();
+		Employee me = new Employee(name,salary,designation);
+		checkSalary(salary);
+		me.insuranceScheme();
+		System.out.println("Insurance Scheme to "+me.getName()+"is:"+me.getInsuranceScheme());
+		System.out.println(me.toString());
+
+		FileOutputStream fos = new FileOutputStream(new File("D:\\capgemini\\output.txt"));
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(me);
+		
+		obj.close();
+	}
+}
+
+Output:
+
+Enter the details
+Enter the  name
+Shraddha
+Enter salary
+50000
+Enter designation
+manager
+Scheme A
+Insurance Scheme to Shraddhais:Scheme A
+com.cg.eis.bean.Employee@55f96302
+
+¬í sr com.cg.eis.bean.EmployeeöCz•éOF I idD salaryL designationt Ljava/lang/String;L insuranceSchemeq ~ L nameq ~ xp    @èj     t Managert Scheme At Shraddha
+
+
+  
+ 

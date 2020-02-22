@@ -1,0 +1,245 @@
+5.1
+a)
+package com.cg.eis.bean;
+
+import com.cg.eis.service.EmployeeService;
+
+public class Employee implements EmployeeService 
+{
+	private int id;
+	private String name;
+	private double salary;
+	private String designation;
+	private String insuranceScheme;
+
+	Employee(){}
+	
+	public Employee(String name, double salary, String designation)
+	{
+		this.name			= name;
+		this.salary			= salary;
+		this.designation	= designation;
+	}
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	public String getDesignation() {
+		return designation;
+	}
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+	public String getInsuranceScheme() {
+		return insuranceScheme;
+	}
+	public void setInsurancescheme(String insuranceScheme) {
+		this.insuranceScheme = insuranceScheme;
+	}
+	
+	public void insuranceScheme()
+	{
+		if((salary>5000)&&(salary<20000))
+		{
+			designation="System Associate";
+			System.out.println(insuranceScheme="Scheme C");
+			System.out.println(designation="System Associate");
+		}
+		else
+		{
+			if((salary>=20000)&&(salary<=40000))
+			{
+				designation="Programmer";
+				System.out.println(insuranceScheme="Scheme B");
+			}
+			else
+			{
+				if(salary>40000)
+				{
+					designation="Manager";
+					System.out.println(insuranceScheme="Scheme A");
+				}
+				else
+				{
+					if(salary<5000)
+					{
+						designation="Clerck";
+						System.out.println("No Scheme");
+					}
+				}
+			
+			}
+		}
+	}
+}
+b)
+package com.cg.eis.service;
+
+public interface EmployeeService {
+	public void insuranceScheme();
+}
+c)
+package com.cg.eis.pl;
+
+import com.cg.eis.bean.*;
+import java.util.Scanner;
+
+public class EmpUser  
+{
+	public static void main(String[] args) 
+	{
+		Scanner obj = new Scanner(System.in);
+		
+		System.out.println("Enter the details");
+		String name = obj.next();
+		double salary = obj.nextDouble();
+		String designation = obj.next();
+
+		System.out.println("Employee details are");
+		System.out.println("Enter the name");
+		System.out.println("Name : "+name);
+		System.out.println("Enter salary");
+		System.out.println("Salary : "+salary);
+		System.out.println("Enter designation");
+		System.out.println("Designation : "+designation);
+		
+		Employee me = new Employee(name,salary,designation);
+		me.insuranceScheme();
+		
+		obj.close();
+	}
+}
+Output:
+Enter the details
+Enter the name
+Shraddha
+Enter salary
+20000
+Enter designation
+Programmer
+Employee details are
+Name : Shraddha
+Salary : 20000.0
+Designation : Programmer
+Scheme B
+
+5.3
+package VJIT;
+import java.util.Scanner;
+abstract class Account 
+{
+	private long accnum;
+	private double balance=500;
+	private String name;
+	private float age;
+
+	@Override
+	public String toString() {
+		return "Account [accnum=" + accnum + ", balance=" + balance + ", name=" + name + ", age=" + age
+				+ ", getAccnum()=" + getAccnum() + ", getBalance()=" + getBalance() + ", getName()=" + getName()
+				+ ", getAge()=" + getAge() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
+	
+	public Account() {
+		
+	
+	}
+	public Account(long accnum,String name,float age)
+	{
+		this.accnum = accnum;
+		this.name = name;
+		this.age = age;
+	}
+	
+	public long getAccnum() {
+		return accnum;
+	}
+	public void setAccnum(long accnum) {
+		this.accnum = accnum;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public float getAge() {
+		return age;
+	}
+	public void setAge(float age) {
+		this.age = age;
+	}
+	public void deposit(double depositamount)
+	{
+	    balance=balance+depositamount;
+	}
+	public void withdraw(double withdrawamount) ;	
+	
+	public void balance() {
+		System.out.println("Available balance : ");
+	}
+}
+package VJIT;
+
+class SavingsAccount extends Account{
+	final int minimumbalance=500;
+	public void withdraw(double withdraw) {
+	    if(minimumbalance>=500)
+	    {
+	    	System.out.println("You can withdraw the amount");
+	    }
+	}
+	}
+class CurrentAccount extends Account{
+	    boolean flag=true;
+	    int bal;
+	    public void withdraw(double withdraw) {
+		if(bal<=0) {
+		System.out.println(""+flag);
+		}
+		else
+		System.out.println(""+!flag);
+	}
+}
+
+
+public class AccountType {
+
+
+	public static void main(String[] args) {
+		SavingsAccount s=new SavingsAccount();
+	CurrentAccount c=new CurrentAccount();
+		s.withdraw(500);
+		c.withdraw(0);
+	}
+	}
+Output:
+You can withdraw the amount
+true
+	
+
+
+
+

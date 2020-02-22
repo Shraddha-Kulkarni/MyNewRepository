@@ -1,0 +1,191 @@
+6.1
+package VJIT;
+
+public class PersonDetails {
+	static String FirstName;
+	static String LastName;
+	String Gender;
+	int Age;
+double Weight;
+
+PersonDetails(){
+	FirstName=null;
+	LastName=null;
+	Gender="F";
+        Weight=85.5;
+}
+public void getFullname() {
+	String s=FirstName.concat(LastName);
+	System.out.println("Name of the person is "+s);
+}
+
+public static void getFullname() {
+	String s=FirstName.concat(LastName);
+	System.out.println("Name of the person is "+s);
+}
+	@SuppressWarnings("static-access")
+	public static void main(String[] args) {
+		
+		PersonDetails pd=new PersonDetails();
+		System.out.println("Person Details");
+		System.out.println("Gender: "+pd.Gender);
+		System.out.println("Weight: "+pd.Weight);
+		s.getFullname();
+		try {
+			getFullname();
+			
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println("Name cannot be empty "+e);
+		}
+		
+		
+	
+
+	}
+}
+
+Output:
+Person Details
+Gender: F
+Weight: 85.5
+Name cannot be empty java.lang.NullPointerException
+
+6.2
+package VJIT;
+public class PersonDetails {
+	static String FirstName;
+	static String LastName;
+	String Gender;
+	int Age;
+double Weight;
+
+PersonDetails(){
+	FirstName="Shraddha";
+	LastName="Kulkarni";
+	Gender="F";
+        Weight=85.5;
+}
+static void checkAge(int age) {
+    if (age <= 15) {
+    	try
+    	{
+      throw new ArithmeticException("Access denied - You must be at least 15 years old.");
+       }
+    	catch(ArithmeticException pd)
+    	{
+    		System.out.println(pd.getMessage());
+    	}
+    }
+    else {
+      System.out.println("Access granted - You are old enough!");
+    }
+  }
+
+public static void getFullname() {
+	String s=FirstName.concat(LastName);
+	System.out.println("Name of the person is "+s);
+        }
+	@SuppressWarnings("static-access")
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PersonDetails pd=new PersonDetails();
+		System.out.println("Person Details");
+		  getFullname();	
+		System.out.println("Gender: "+pd.Gender);
+		System.out.println("Weight: "+pd.Weight);
+		checkAge(10);
+	
+
+	}
+}
+
+Output:
+Person Details
+Name of the person is ShraddhaKulkarni
+Gender: F
+Weight: 85.5
+Access denied - You must be at least 15 years old.
+
+6.3
+
+package com.cg.eis.exception;
+
+@SuppressWarnings("serial")
+public class EmployeeException extends Exception
+{
+	public EmployeeException(){}
+	
+	public EmployeeException(String s)
+	{
+		super(s);
+	}
+}
+
+package com.cg.eis.pl;
+
+import com.cg.eis.bean.*;
+import com.cg.eis.exception.*;
+import java.util.Scanner;
+
+public class EmpUser {
+	
+	static void checkSalary(double salary) 
+	{ 
+		if (salary <= 3000) 
+		{ 
+			try
+			{
+				throw new EmployeeException("Enter correct salary");
+			}
+			catch(EmployeeException ee)
+			{
+				System.out.println(ee.getMessage());
+			}
+		}
+	}
+	
+	public static void main(String[] args) throws EmployeeException
+	{
+		Scanner obj = new Scanner(System.in);
+		
+		System.out.println("Enter the details");
+		System.out.println("Enter the  name");
+		String name = obj.next();
+		System.out.println("Enter salary");
+		double salary = obj.nextDouble();
+		System.out.println("Enter designation");
+		String designation = obj.next();
+
+		System.out.println("Employee details are");
+		System.out.println("Name : "+name);
+		System.out.println("Salary : "+salary);
+		System.out.println("Designation : "+designation);
+		
+		Employee me = new Employee(name,salary,designation);
+
+		checkSalary(salary);
+		me.insuranceScheme();
+		
+		obj.close();
+	}
+}
+Output:
+Enter the details
+Enter the  name
+Shraddha
+Enter salary
+2000
+Enter designation
+manager
+Employee details are
+Name : Shraddha
+Salary : 2000.0
+Designation : manager
+Enter correct salary
+No Scheme
+
+
+  
+ 
